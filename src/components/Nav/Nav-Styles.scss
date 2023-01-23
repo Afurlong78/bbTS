@@ -1,0 +1,215 @@
+@import "../../global/Styles.scss";
+
+.nav {
+  height: 80px;
+  width: 100%;
+
+  z-index: 100;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  padding: 0px 40px;
+  box-sizing: border-box;
+
+  background: white;
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+  @include flexDisplay(row, space-between, center);
+  @include fonts(1rem, 400, 0.5px);
+
+  .logo-container {
+    height: 100%;
+    width: auto;
+
+    gap: 1rem;
+    text-decoration: none;
+
+    color: $thirdColor;
+
+    @include flexDisplay(row, center, center);
+    @include fonts(2rem, 400, 0.5px);
+
+    @media all and (max-width: 490px) {
+      @include fonts(1.5rem, 400, 0.5px);
+    }
+
+    @media all and (max-width: 420px) {
+      @include fonts(1rem, 400, 0.5px);
+    }
+
+    p {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+
+  .logo {
+    height: 70px;
+    aspect-ratio: 1/1;
+
+    @media all and (max-width: 490px) {
+      height: 50px;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  .links-container {
+    height: auto;
+    width: auto;
+
+    gap: 1rem;
+
+    @include flexDisplay(row, center, center);
+
+    @media all and (max-width: 790px) {
+      display: none;
+    }
+  }
+
+  .link {
+    height: 2.5rem;
+    width: auto;
+
+    box-sizing: border-box;
+    padding: 5px 10px;
+
+    border: none;
+
+    background: $primaryColor;
+    color: white;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    @include fonts(1rem, 600, 0.5px);
+    @include flexDisplay(row, center, center);
+
+    border-radius: 4px;
+
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      background-color: $secondaryColor;
+      transform: scale(1.05);
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .mobile-button {
+    display: none;
+    @media all and (max-width: 790px) {
+      @include flexDisplay(row, center, center);
+      height: auto;
+      width: auto;
+
+      box-sizing: border-box;
+
+      padding: 5px;
+
+      color: $thirdColor;
+
+      cursor: pointer;
+
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+
+      transition: all 300ms ease-in-out;
+
+      &:hover {
+        background: rgb(233, 233, 233);
+        transform: scale(1.05);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      @media all and (max-width: 500px) {
+        &:hover {
+          background: rgb(233, 233, 233);
+        }
+      }
+    }
+  }
+}
+
+.offcanvas-body {
+  height: 100%;
+
+  @include flexDisplay(column, start, center);
+  box-sizing: border-box;
+
+  gap: 1rem;
+
+  padding: 10px;
+
+  overflow: scroll;
+
+  .link {
+    height: 2.5rem;
+    width: 6rem;
+
+    box-sizing: border-box;
+    padding: 5px 10px;
+
+    border: none;
+
+    background: $primaryColor;
+    color: white;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    @include fonts(1rem, 600, 0.5px);
+    @include flexDisplay(row, center, center);
+
+    border-radius: 4px;
+
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      background-color: $secondaryColor;
+      transform: scale(1.05);
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @media all and (max-width: 500px) {
+      &:hover {
+        background-color: $secondaryColor;
+      }
+    }
+  }
+}
+
+.close-mobile {
+  height: 3rem;
+  width: 3rem;
+
+  margin-left: 5px;
+  margin-top: 5px;
+
+  background: $primaryColor;
+  color: white;
+
+  @include fonts(1rem, 700, 0px);
+  @include flexDisplay(row, center, center);
+  border: none;
+  border-radius: 4px;
+
+  transition: all 300ms ease-in-out;
+
+  &:hover {
+    background-color: $secondaryColor;
+    transform: scale(1.05);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  @media all and (max-width: 500px) {
+    &:hover {
+      background-color: $secondaryColor;
+    }
+  }
+}

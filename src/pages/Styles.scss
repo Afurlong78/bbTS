@@ -1,0 +1,22 @@
+@import "../global/Styles.scss";
+
+.outer-page {
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+
+  @include fonts(1rem, 500, 0.5px);
+}
+
+.inner-pages {
+  height: 100%;
+  width: 100%;
+
+  margin: 90px auto 0px auto;
+
+  box-sizing: border-box;
+
+  @include fonts(1rem, 500, 0.5px);
+  @include flexDisplay(column, center, center);
+}

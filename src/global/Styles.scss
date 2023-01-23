@@ -1,0 +1,70 @@
+$primaryColor: #6a84da;
+$secondaryColor: #586fbb;
+$thirdColor: #43558f;
+$fourthColor: #39436e;
+
+$lightTheme: rgb(230, 230, 230);
+$darkTheme: #292929;
+
+$something:#6a84da63;
+
+$grayBackground: rgb(233, 233, 233);
+
+$padding: 0px 40px 40px 40px;
+
+//gradient colors
+
+$gradient-color-one: #39436e2e;
+$gradient-color-two: #43558f1a;
+$gradient-color-three: #586fbb00;
+
+@mixin flexDisplay($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin fonts($size, $weight, $spacing) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: $spacing;
+}
+
+@mixin display($height, $width, $color) {
+  height: $height;
+  width: $width;
+  background-color: $color;
+}
+
+@mixin theme($theme) {
+  @if $theme == "light" {
+    background: $lightTheme;
+  } @else {
+    background: $darkTheme;
+  }
+}
+
+.error {
+  height: 1rem;
+  width: 100%;
+
+  color: red;
+
+  @include flexDisplay(row, center, center);
+  @include fonts(0.8rem, 500, 0.5px);
+
+  padding-top: 0.2rem;
+}
+
+.visible {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+  transform: translateX(0);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateX(20px);
+}

@@ -1,0 +1,21 @@
+@import "../../global/Styles.scss";
+
+.budget-container {
+  @include display(100%, 100%, white);
+  @include flexDisplay(column, center, center);
+  animation: appear 500ms ease-in-out;
+}
+
+.ui-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
