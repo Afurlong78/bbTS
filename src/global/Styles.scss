@@ -1,19 +1,20 @@
+//brand colors
 $primaryColor: #6a84da;
 $secondaryColor: #586fbb;
 $thirdColor: #43558f;
 $fourthColor: #39436e;
 
-$lightTheme: rgb(230, 230, 230);
+//themes
+$lightTheme: white;
+$lightText: black;
 $darkTheme: #292929;
-
-$something:#6a84da63;
+$darkText: white;
 
 $grayBackground: rgb(233, 233, 233);
 
 $padding: 0px 40px 40px 40px;
 
 //gradient colors
-
 $gradient-color-one: #39436e2e;
 $gradient-color-two: #43558f1a;
 $gradient-color-three: #586fbb00;
@@ -67,4 +68,39 @@ $gradient-color-three: #586fbb00;
 .hidden {
   opacity: 0;
   transform: translateX(20px);
+}
+
+//themeing
+.primary-text {
+  color: $primaryColor;
+}
+
+.dark-primary-button {
+  color: white;
+
+  &:hover {
+    background-color: #161616;
+    color: white;
+  }
+}
+
+.light-primary-button {
+  color: $fourthColor;
+
+  &:hover {
+    background-color: $fourthColor;
+    color: white;
+  }
+}
+
+.light-text {
+  color: black;
+}
+
+.primary-text {
+  color: $fourthColor;
+}
+
+.dark-text {
+  color: white;
 }

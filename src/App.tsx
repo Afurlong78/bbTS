@@ -3,7 +3,6 @@ import { lazy, useEffect } from "react";
 import { useSignInContext } from "./context/SignInProvider";
 import Pages from "./pages/Pages";
 import Home from "./components/Home/Home";
-import Test from "./components/Something/test";
 const Login = lazy(() => import("./components/Login/Login"));
 const Register = lazy(() => import("./components/Register/Register"));
 const BudgetUI = lazy(() => import("./components/BudgetUI/BudgetUI"));
@@ -30,7 +29,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/budget" element={<BudgetUI />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/test" element={<Test />} />
         </Route>
       </Routes>
     </Router>

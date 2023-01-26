@@ -14,8 +14,6 @@ export const useLogin = () => {
     errorMessage: "",
   });
 
-  
-
   const userLoginLink = process.env.REACT_APP_USER_LOGIN!;
 
   const login = ({ email, password }: LoginType) => {
@@ -27,7 +25,7 @@ export const useLogin = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res, "login-response");
+        // console.log(res, "login-response");
         setErrorOrLoading({ ...errorOrLoading, loading: false });
         localStorage.setItem("bb-login-token", res.data.token);
         setResponse(res);
@@ -35,7 +33,7 @@ export const useLogin = () => {
         navigate("/budget");
       })
       .catch((err) => {
-        console.log(err, "login-error");
+        // console.log(err, "login-error");
         setErrorOrLoading({
           loading: false,
           error: true,

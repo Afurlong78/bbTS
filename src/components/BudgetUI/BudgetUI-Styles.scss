@@ -1,9 +1,35 @@
 @import "../../global/Styles.scss";
 
 .budget-container {
-  @include display(100%, 100%, white);
+  @include display(100%, 100%, transparent);
   @include flexDisplay(column, center, center);
   animation: appear 500ms ease-in-out;
+}
+
+.locked {
+  height: 100vh;
+  width: 100%;
+
+  margin-top: -80px;
+
+  @include flexDisplay(column, center, center);
+
+  gap: 1rem;
+
+  @media all and (max-height: 300px) {
+    height: 100%;
+  }
+
+  .locked-content {
+    height: 380px;
+    width: auto;
+
+    margin-top: 80px;
+
+    gap: 1rem;
+
+    @include flexDisplay(column, center, center);
+  }
 }
 
 .ui-wrapper {

@@ -3,7 +3,7 @@ import { RegisterType, ErrorOrLoading } from "../global/Types";
 import axios from "axios";
 
 export const useRegister = () => {
-  const [response, setResponse] = useState<any>();
+  const [success, setSuccess] = useState<boolean>(false);
   const [errorOrLoading, setErrorOrLoading] = useState<ErrorOrLoading>({
     loading: false,
     error: false,
@@ -22,7 +22,7 @@ export const useRegister = () => {
       })
       .then((res) => {
         console.log(res, "register-response");
-        setResponse(res);
+        setSuccess(true);
         setErrorOrLoading({ ...errorOrLoading, loading: false });
       })
       .catch((err) => {
@@ -34,5 +34,5 @@ export const useRegister = () => {
       });
   };
 
-  return { register, response, errorOrLoading };
+  return { register, errorOrLoading, success, setSuccess };
 };

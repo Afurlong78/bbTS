@@ -4,11 +4,13 @@ import { useRegister } from "../../hooks/useRegsiter";
 import { registerSchema } from "../../validation/formValidation";
 import { useFormik, FormikHelpers } from "formik";
 import { RegisterType, Visible } from "../../global/Types";
+import { useSignInContext } from "../../context/SignInProvider";
 import BackgroundComponent from "../Form-Styles/BackgroundComponent";
 const eye = require("../../assets/Icons/Eye.png");
 
 function Register() {
-  const { register, response } = useRegister();
+  const { theme } = useSignInContext();
+  const { register, success, setSuccess } = useRegister();
   const [visible, setVisible] = useState<Visible>({
     password: false,
     confirm: false,
@@ -32,13 +34,40 @@ function Register() {
     });
 
   return (
-    <div className="outter-form-container">
+    <div
+      className={
+        theme
+          ? `outter-form-container dark-gradient`
+          : `outter-form-container light-gradient`
+      }
+    >
+      {success ? (
+        <div className="successful">
+          <div>
+            <h3>Success!</h3>
+            <p>
+              You have successfully registered your account! You should be
+              recieving an email from us to confirm your account creation.
+              Please click the link provided to confirm your account to begin
+              budgeting!{" "}
+            </p>
+            <button onClick={() => setSuccess(false)}>x</button>
+          </div>
+        </div>
+      ) : null}
+
       <div className="inner-form-container">
         <form className="form" autoComplete="off" onSubmit={handleSubmit}>
-          <h3 className="form-header">Register...</h3>
+          <h3
+            className={
+              theme ? `form-header dark-text` : `form-header primary-text`
+            }
+          >
+            Register...
+          </h3>
 
           <div>
-            <span>Email</span>{" "}
+            <span className={theme ? `dark-text` : `primary-text`}>Email</span>{" "}
             <input
               placeholder="Enter your email..."
               name="email"
@@ -55,7 +84,9 @@ function Register() {
           </div>
 
           <div>
-            <span>Password</span>{" "}
+            <span className={theme ? `dark-text` : `primary-text`}>
+              Password
+            </span>{" "}
             <input
               placeholder="Enter your password..."
               name="password"
@@ -81,7 +112,9 @@ function Register() {
           </div>
 
           <div>
-            <span>Confirm Password</span>{" "}
+            <span className={theme ? `dark-text` : `primary-text`}>
+              Confirm Password
+            </span>{" "}
             <input
               placeholder="Confirm your password..."
               name="confirm"

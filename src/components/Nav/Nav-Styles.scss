@@ -13,9 +13,9 @@
   padding: 0px 40px;
   box-sizing: border-box;
 
-  background: white;
-
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+  transition: background-color 300ms ease-in-out;
 
   @include flexDisplay(row, space-between, center);
   @include fonts(1rem, 400, 0.5px);
@@ -32,7 +32,7 @@
     @include flexDisplay(row, center, center);
     @include fonts(2rem, 400, 0.5px);
 
-    @media all and (max-width: 490px) {
+    @media all and (max-width: 510px) {
       @include fonts(1.5rem, 400, 0.5px);
     }
 
@@ -64,7 +64,7 @@
 
     @include flexDisplay(row, center, center);
 
-    @media all and (max-width: 790px) {
+    @media all and (max-width: 980px) {
       display: none;
     }
   }
@@ -78,12 +78,11 @@
 
     border: none;
 
-    background: $primaryColor;
-    color: white;
-
     text-decoration: none;
 
     cursor: pointer;
+
+    gap: 0.5rem;
 
     @include fonts(1rem, 600, 0.5px);
     @include flexDisplay(row, center, center);
@@ -91,17 +90,23 @@
     border-radius: 4px;
 
     transition: all 200ms ease-in-out;
+  }
 
-    &:hover {
-      background-color: $secondaryColor;
-      transform: scale(1.05);
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  .mobile-wrapper {
+    display: none;
+
+    @media all and (max-width: 980px) {
+      height: auto;
+      width: auto;
+
+      @include flexDisplay(row, center, center);
+      gap: 0.7rem;
     }
   }
 
-  .mobile-button {
+  .mobile-button-light {
     display: none;
-    @media all and (max-width: 790px) {
+    @media all and (max-width: 980px) {
       @include flexDisplay(row, center, center);
       height: auto;
       width: auto;
@@ -111,12 +116,12 @@
       padding: 5px;
 
       color: $thirdColor;
+      background: white;
 
       cursor: pointer;
 
       border: none;
       border-radius: 4px;
-      background: transparent;
 
       transition: all 300ms ease-in-out;
 
@@ -129,6 +134,41 @@
       @media all and (max-width: 500px) {
         &:hover {
           background: rgb(233, 233, 233);
+        }
+      }
+    }
+  }
+
+  .mobile-button-dark {
+    display: none;
+    @media all and (max-width: 980px) {
+      @include flexDisplay(row, center, center);
+      height: auto;
+      width: auto;
+
+      box-sizing: border-box;
+
+      padding: 5px;
+
+      color: white;
+      background: $darkTheme;
+
+      cursor: pointer;
+
+      border: none;
+      border-radius: 4px;
+
+      transition: all 300ms ease-in-out;
+
+      &:hover {
+        background: #1d1d1d;
+        transform: scale(1.05);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      @media all and (max-width: 500px) {
+        &:hover {
+          background: #161616;
         }
       }
     }
@@ -149,7 +189,7 @@
 
   .link {
     height: 2.5rem;
-    width: 6rem;
+    width: 8rem;
 
     box-sizing: border-box;
     padding: 5px 10px;
@@ -163,8 +203,10 @@
 
     cursor: pointer;
 
+    gap: 0.7rem;
+
     @include fonts(1rem, 600, 0.5px);
-    @include flexDisplay(row, center, center);
+    @include flexDisplay(row, space-between, center);
 
     border-radius: 4px;
 
@@ -182,6 +224,80 @@
       }
     }
   }
+}
+
+.logout-btn-light {
+  height: 2.5rem;
+  width: auto;
+
+  box-sizing: border-box;
+  padding: 5px 10px;
+
+  color: $fourthColor;
+  background-color: white;
+
+  border: none;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  gap: 0.5rem;
+
+  @include fonts(1rem, 600, 0.5px);
+  @include flexDisplay(row, center, center);
+
+  border-radius: 4px;
+
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    background-color: $fourthColor;
+    color: white;
+  }
+}
+
+.logout-btn-dark {
+  height: 2.5rem;
+  width: auto;
+
+  box-sizing: border-box;
+  padding: 5px 10px;
+
+  color: white;
+  background-color: $darkTheme;
+
+  border: none;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  gap: 0.5rem;
+
+  @include fonts(1rem, 600, 0.5px);
+  @include flexDisplay(row, center, center);
+
+  border-radius: 4px;
+
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    background-color: #161616;
+    color: white;
+  }
+}
+
+.link-wrapper {
+  border: none;
+  height: auto;
+  width: auto;
+
+  padding: 0px;
+
+  background: none;
+
+  @include flexDisplay(row, center, center);
 }
 
 .close-mobile {

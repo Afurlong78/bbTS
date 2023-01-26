@@ -5,12 +5,14 @@ import { useLogin } from "../../hooks/useLogin";
 import { loginSchema } from "../../validation/formValidation";
 import { useFormik, FormikHelpers } from "formik";
 import { LoginType, Visible } from "../../global/Types";
+import { useSignInContext } from "../../context/SignInProvider";
 import Loader from "../Loader/Loader";
 import BackgroundComponent from "../Form-Styles/BackgroundComponent";
 const eye = require("../../assets/Icons/Eye.png");
 
 function Login() {
-  const { login, response, errorOrLoading } = useLogin();
+  const { theme } = useSignInContext();
+  const { login, errorOrLoading } = useLogin();
   const [visible, setVisible] = useState<Visible>({
     password: false,
   });
@@ -32,7 +34,13 @@ function Login() {
     });
 
   return (
-    <div className="outter-form-container">
+    <div
+      className={
+        theme
+          ? `outter-form-container dark-gradient`
+          : `outter-form-container light-gradient`
+      }
+    >
       {errorOrLoading.loading ? (
         <div className="load-wrapper">
           <Loader />
@@ -40,7 +48,13 @@ function Login() {
       ) : null}
       <div className="inner-form-container">
         <form className="form" autoComplete="off" onSubmit={handleSubmit}>
-          <h3 className="form-header">Login...</h3>
+          <h3
+            className={
+              theme ? `form-header dark-text` : `form-header primary-text`
+            }
+          >
+            Login...
+          </h3>
 
           {errorOrLoading.error ? (
             <p className="error-message">
@@ -51,7 +65,7 @@ function Login() {
           ) : null}
 
           <div>
-            <span>Email</span>{" "}
+            <span className={theme ? `dark-text` : `primary-text`}>Email</span>{" "}
             <input
               placeholder="Enter your email..."
               name="email"
@@ -67,7 +81,9 @@ function Login() {
             )}
           </div>
           <div>
-            <span>Password</span>{" "}
+            <span className={theme ? `dark-text` : `primary-text`}>
+              Password
+            </span>{" "}
             <input
               placeholder="Enter your password..."
               name="password"
