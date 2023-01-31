@@ -3,7 +3,7 @@ import { useGetPageData } from "../../hooks/useGetPageData";
 
 function Expense() {
   const expenseLink = process.env.REACT_APP_USER_EXPENSES!;
-  useGetPageData(expenseLink);
+  // useGetPageData(expenseLink);
 
   return (
     <div>

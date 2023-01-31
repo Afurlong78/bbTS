@@ -1,5 +1,6 @@
 import Budget from "../Budget/Budget";
 import Expense from "../Expense/Expense";
+import Months from "../Months/Months";
 import "./BudgetUI-Styles.scss";
 import "../../global/Styles.scss";
 import { useSignInContext } from "../../context/SignInProvider";
@@ -11,7 +12,7 @@ function BudgetUI() {
   const storedToken = localStorage.getItem("bb-login-token");
 
   return (
-    <div className="budget-container">
+    <div className="budget-ui-container">
       {!storedToken ? (
         <div className="locked">
           <div className="locked-content">
@@ -27,6 +28,7 @@ function BudgetUI() {
         </div>
       ) : (
         <div className="ui-wrapper">
+          <Months />
           <Budget />
           <Expense />
         </div>

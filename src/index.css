@@ -18,10 +18,11 @@ html {
 
 ::-webkit-scrollbar {
   width: 0.7em;
+  height: 0.7em;
 }
 
 ::-webkit-scrollbar-track {
-  background: white;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

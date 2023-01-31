@@ -32,6 +32,27 @@ export type Expense = {
   value: number;
 };
 
+//For Months Provider
+export type Month = {
+  january: number;
+  february: number;
+  march: number;
+  april: number;
+  may: number;
+  june: number;
+  july: number;
+  august: number;
+  september: number;
+  october: number;
+  novemeber: number;
+  decemeber: number;
+};
+
+export type MonthsTypes = {
+  months: Month;
+  setMonths: Dispatch<SetStateAction<Month>>;
+};
+
 //for sign in provider
 export type SignedInType = {
   theme: boolean;

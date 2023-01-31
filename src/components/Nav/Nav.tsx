@@ -37,7 +37,7 @@ function Nav() {
         <Link to="/">
           <img src={logoIcon} className="logo" />
         </Link>
-        <p className={theme ? `primary-text` : ``}>
+        <p className={theme ? `primary-text` : `fourth-text`}>
           <strong>Better</strong>Budget
         </p>
       </div>
@@ -109,11 +109,7 @@ function Nav() {
         </Link>
         {signedIn ? (
           <button
-            className={
-              theme
-                ? `logout-btn-dark `
-                : `logout-btn-light `
-            }
+            className={theme ? `logout-btn-dark ` : `logout-btn-light `}
             onClick={logoutHandler}
           >
             Logout

@@ -1,8 +1,9 @@
 @import "../../global/Styles.scss";
 
-.budget-container {
-  @include display(100%, 100%, transparent);
-  @include flexDisplay(column, center, center);
+.budget-ui-container {
+  height: 100%;
+  width: 100%;
+
   animation: appear 500ms ease-in-out;
 }
 
@@ -26,15 +27,21 @@
 
     margin-top: 80px;
 
-    gap: 1rem;
-
     @include flexDisplay(column, center, center);
+
+    gap: 1rem;
   }
 }
 
 .ui-wrapper {
   height: 100%;
-  width: 100%;
+  width: 85%;
+
+  margin: auto;
+
+  gap: 1rem;
+
+  @include flexDisplay(column, center, center);
 }
 
 @keyframes appear {

@@ -11,6 +11,16 @@ export function SignInProvider({ children }: ContextProps) {
   const [signedIn, setSignedIn] = useState<boolean>(false);
   const [theme, setTheme] = useState<boolean>(false);
 
+  useEffect(() => {
+    const body = document.body;
+
+    if (theme === false) {
+      body.style.backgroundColor = "white";
+    } else if (theme === true) {
+      body.style.backgroundColor = "#292929";
+    }
+  }, [theme]);
+
   return (
     <SignInContext.Provider value={{ theme, setTheme, signedIn, setSignedIn }}>
       {children}

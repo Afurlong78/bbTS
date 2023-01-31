@@ -1,0 +1,45 @@
+@import "../../../global/Styles.scss";
+
+.dropdown-view {
+  margin-top: 5px;
+  max-height: 200px;
+
+  overflow-y: scroll;
+}
+
+.dropdown-component-container {
+  height: 100%;
+  width: auto;
+}
+
+.dd-dark-primary-button {
+  width: 8rem;
+  height: 2.5rem;
+
+  color: #161616;
+  background: white;
+  text-decoration: none;
+
+  @include fonts(0.9rem, 700, 0.5px);
+
+  &:hover {
+    background-color: #161616;
+    color: white;
+  }
+}
+
+.dd-light-primary-button {
+  width: 8rem;
+  height: 2.5rem;
+
+  color: white;
+  background: $fourthColor;
+  text-decoration: none;
+
+  @include fonts(0.9rem, 700, 0.5px);
+
+  &:hover {
+    background-color: white;
+    color: $fourthColor;
+  }
+}
