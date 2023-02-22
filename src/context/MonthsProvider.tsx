@@ -1,5 +1,12 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { ContextProps, MonthsTypes, Month } from "../global/Types";
+import { monthKeys } from "../utils/monthKeys";
 
 const MonthsContext = createContext({} as MonthsTypes);
 
@@ -8,20 +15,25 @@ export const useMonthsContext = () => {
 };
 
 export function MonthsProvider({ children }: ContextProps) {
-  const [months, setMonths] = useState<Month>({
-    january: 0,
-    february: 0,
-    march: 0,
-    april: 0,
-    may: 0,
-    june: 0,
-    july: 0,
-    august: 0,
-    september: 0,
-    october: 0,
-    novemeber: 0,
-    decemeber: 0,
-  });
+  //vlaue = (month budget) - (month expenses array)
+  const [months, setMonths] = useState<Month[]>([
+    { month: "January", value: 0 },
+    { month: "February", value: 0 },
+    { month: "March", value: 0 },
+    { month: "April", value: 0 },
+    { month: "May", value: 0 },
+    { month: "June", value: 0 },
+    { month: "July", value: 0 },
+    { month: "August", value: 0 },
+    { month: "Spetember", value: 0 },
+    { month: "October", value: 0 },
+    { month: "November", value: 0 },
+    { month: "December", value: 0 },
+  ]);
+
+  const updateMonths = useCallback(() => {
+    
+  }, []);
 
   return (
     <MonthsContext.Provider value={{ months, setMonths }}>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Budget from "../Budget/Budget";
 import Expense from "../Expense/Expense";
 import Months from "../Months/Months";
@@ -6,10 +7,16 @@ import "../../global/Styles.scss";
 import { useSignInContext } from "../../context/SignInProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { useGetPageData } from "../../hooks/useGetPageData";
 
 function BudgetUI() {
   const { theme } = useSignInContext();
+  const { getData } = useGetPageData();
   const storedToken = localStorage.getItem("bb-login-token");
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="budget-ui-container">
@@ -29,7 +36,9 @@ function BudgetUI() {
       ) : (
         <div className="ui-wrapper">
           <Months />
+
           <Budget />
+
           <Expense />
         </div>
       )}

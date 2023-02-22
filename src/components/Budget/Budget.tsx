@@ -1,36 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Budget-Styles.scss";
-import { useGetPageData } from "../../hooks/useGetPageData";
 import { useBudgetContext } from "../../context/BudgetProvider";
+import { useExpenseContext } from "../../context/ExpenseProvider";
 import { useSignInContext } from "../../context/SignInProvider";
 import { formatCurrency } from "../../utils/formatCurrency";
 import DropDown from "../BootStrap/DropDown/DropDown";
-import { useFormik } from "formik";
 
 function Budget() {
-  const budgetLink = process.env.REACT_APP_USER_BUDGETS!;
-  const { budget } = useBudgetContext();
+  const { budget, postBudget, budgetInput, setBudgetInput } =
+    useBudgetContext();
+  const { postExpense, spent } = useExpenseContext();
   const { theme } = useSignInContext();
   const [month, setMonth] = useState<string>("January");
-  // useGetPageData(budgetLink);
-
-  //budget
-  // const { values, handleChange, handleSubmit, errors, touched, handleBlur } =
-  //   useFormik({
-  //     initialValues: {
-  //       email: "",
-  //       password: "",
-  //       confirm: "",
-  //     },
-  //     onSubmit: (
-  //       values: RegisterType,
-  //       { setSubmitting }: FormikHelpers<RegisterType>
-  //     ) => {
-  //       register(values);
-  //       setSubmitting(false);
-  //     },
-  //     validationSchema: registerSchema,
-  //   });
+  const [expenseInput, setExpenseInput] = useState<number>(0);
+  const remaining = budget.value - spent;
 
   return (
     <div className="budget-container">
@@ -39,9 +22,9 @@ function Budget() {
           className="value"
           style={{ background: "#7794f5", color: "#39436e" }}
         >
-          Budget:{" "}
+          Budget:
           <strong>
-            <span>{formatCurrency(budget)}</span>
+            <span>{formatCurrency(budget?.value)}</span>
           </strong>
         </div>
         <div
@@ -50,16 +33,16 @@ function Budget() {
         >
           Remaining:
           <strong>
-            <span>{formatCurrency(budget)}</span>
+            <span>{formatCurrency(remaining)}</span>
           </strong>
         </div>
         <div
           className="value"
           style={{ background: "#48da85", color: "#184e2f" }}
         >
-          Spent:{" "}
+          Spent:
           <strong>
-            <span>{formatCurrency(budget)}</span>
+            <span>{formatCurrency(spent)}</span>
           </strong>
         </div>
       </div>
@@ -70,11 +53,13 @@ function Budget() {
 
           <div className="input-wrapper">
             <input
+              onChange={(e) => setBudgetInput(e.target.value)}
               className="input"
               type="number"
               placeholder="Submit your budget..."
             />
             <button
+              onClick={() => postBudget(parseInt(budgetInput), month)}
               className={theme ? "dark-primary-button" : "light-primary-button"}
             >
               Submit
@@ -87,11 +72,17 @@ function Budget() {
 
           <div className="input-wrapper">
             <input
+              onChange={(e) => setExpenseInput(parseInt(e.target.value))}
               className="input"
               type="number"
               placeholder="Submit your expenses..."
             />
-            <button>Submit</button>
+            <button
+              onClick={() => postExpense(expenseInput, month)}
+              className={theme ? "dark-primary-button" : "light-primary-button"}
+            >
+              Submit
+            </button>
           </div>
         </div>
 
