@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import { ContextProps, BudgetTypes, Budget } from "../global/Types";
+import { ContextProps, BudgetTypes, Budget, Expense } from "../global/Types";
 import axios from "axios";
 
 const BudgetContext = createContext({} as BudgetTypes);
@@ -10,7 +10,8 @@ export const useBudgetContext = () => {
 
 export function BudgetProvider({ children }: ContextProps) {
   const token = localStorage.getItem("bb-login-token");
-  const [lookingAtMonth, setLookingAtMonth] = useState<string>("January");
+  // const [lookingAtMonth, setLookingAtMonth] = useState<string>("January");
+  const [expenses, setExpenses] = useState<Expense[]>([]);
   const [budgetInput, setBudgetInput] = useState<string>("");
   const [budget, setBudget] = useState<Budget>({
     value: 0,
@@ -19,19 +20,20 @@ export function BudgetProvider({ children }: ContextProps) {
 
   const budgetLink = process.env.REACT_APP_USER_BUDGETS!;
 
-  function getBudget() {
-    axios
-      .get(budgetLink)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // function getBudget() {
+  //   axios
+  //     .get(budgetLink)
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   function postBudget(value: number, month: string) {
-    if (value === 0) return;
+    if (isNaN(value) || value === 0) return;
+    setBudgetInput("");
 
     axios
       .post(
@@ -49,9 +51,11 @@ export function BudgetProvider({ children }: ContextProps) {
       .then((response) => {
         console.log(response, "response");
         setBudget({
-          value: response.data.budget.budget,
-          month: response.data.budget.month,
+          value: response.data.data.budget,
+          month: response.data.data.month,
         });
+        
+        setExpenses(response.data.data.expenses);
       })
       .catch((error) => {
         console.log(error, "error");
@@ -67,6 +71,8 @@ export function BudgetProvider({ children }: ContextProps) {
         postBudget,
         budgetInput,
         setBudgetInput,
+        expenses,
+        setExpenses,
       }}
     >
       {children}

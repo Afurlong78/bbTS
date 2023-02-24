@@ -14,20 +14,23 @@ export type BudgetTypes = {
   budgetInput: string;
   setBudgetInput: Dispatch<SetStateAction<string>>;
   postBudget: (value: number, month: string) => void;
+  expenses: Expense[];
+  setExpenses: (value: Expense[]) => void;
 };
 
 export type Budget = {
-  month: String;
+  month: string;
   value: number;
   id?: any;
 };
 
 //For Expense Provider
 export type ExpenseTypes = {
-  expenses: Expense[];
-  setExpenses: (value: Expense[]) => void;
+  expenseInput: string;
+  setExpenseInput: Dispatch<SetStateAction<string>>;
   postExpense: (value: number, month: string) => void;
-  getExpense: () => void;
+  removeExpense: (id: string, month: string) => void;
+  removeAllExpenses: (month: string) => void;
   setSpent: Dispatch<SetStateAction<number>>;
   spent: number;
 };
@@ -38,7 +41,9 @@ export type Expense = {
   category: string;
 };
 
-export type ExpenseItemType = {};
+export type ExpenseItemTypeProps = {
+  expense: Expense;
+};
 
 //For Months Provider
 

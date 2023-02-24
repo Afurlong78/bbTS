@@ -1,20 +1,117 @@
 @import "../../global/Styles.scss";
 
+//expense
 .expense-container {
   height: 400px;
-  width: 800px;
+  width: 100%;
 
   overflow-x: hidden;
-  overflow-y: scroll;
 
-  gap: 0.2rem;
+  margin-top: 1rem;
 
   @include flexDisplay(column, start, center);
 
-  .expense-item {
-    height: 40px;
+  .category-display {
+    height: auto;
     width: 100%;
 
-    @include flexDisplay(row, center, center);
+    box-sizing: border-box;
+    padding: 5px;
+
+    margin-bottom: 1rem;
+
+    @include flexDisplay(row, space-between, center);
+
+    .category {
+      @include fonts(1.3rem, 700, 0.5px);
+
+      min-width: 150px;
+      min-height: 40px;
+      width: auto;
+
+      margin-right: 10px;
+
+      @include flexDisplay(row, start, center);
+    }
+  }
+
+  .expense-scroll-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    @include flexDisplay(column, start, center);
+
+    gap: 0.2rem;
+  }
+}
+
+.category-display-end {
+  @include fonts(1.3rem, 700, 0.5px);
+
+  min-width: 150px;
+  min-height: 40px;
+  width: auto;
+
+  margin-right: 10px;
+
+  @include flexDisplay(row, center, center);
+}
+
+//expense item
+
+.expense-item {
+  height: 40px;
+  width: 100%;
+
+  box-sizing: border-box;
+  padding: 5px;
+
+  border-radius: 4px;
+
+  @include flexDisplay(row, space-between, center);
+  @include fonts(1rem, 600, 0.5px);
+
+  transition: all 300ms ease-in-out;
+
+  .value-row {
+    min-width: 150px;
+    min-height: 40px;
+    width: auto;
+
+    @include flexDisplay(row, start, center);
+  }
+}
+
+.dark-expense-item {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.light-expense-item {
+  background: rgba(0, 0, 0, 0.15);
+  color: $fourthColor;
+}
+
+.value-row-end {
+  min-width: 150px;
+  min-height: 40px;
+  width: auto;
+
+  @include flexDisplay(row, center, center);
+
+  button {
+    height: 30px;
+    width: 50px;
+
+    border: none;
+    background: none;
+
+    transition: transform 300ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }

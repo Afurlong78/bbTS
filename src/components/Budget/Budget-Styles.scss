@@ -64,46 +64,113 @@
 
       gap: 1rem;
       @include flexDisplay(row, space-between, center);
-
-      button {
-        height: 2.5rem;
-        box-sizing: border-box;
-
-        padding: 5px;
-        border-radius: 4px;
-        border: 2px solid;
-
-        @include flexDisplay(row, center, center);
-        @include fonts(0.9rem, 500, 0.5px);
-      }
-    }
-
-    .input {
-      width: 100%;
-      height: 2.5rem;
-
-      box-sizing: border-box;
-
-      padding: 5px;
-
-      color: black;
-
-      border-radius: 4px;
-      border: none;
-      outline: 2px solid $fourthColor;
-      @include fonts(1rem, 500, 0.5px);
-
-      &:focus {
-        border: none;
-        outline: 2px solid $primaryColor;
-      }
     }
   }
+}
 
-  //   .dropdown-container {
-  //     @include flexDisplay(row, center, center);
+.current-month-view {
+  width: 100%;
 
-  //     height: 100%;
-  //     width: auto;
-  //   }
+  border-bottom: 2px solid;
+  margin-bottom: 20px;
+
+  @include flexDisplay(row, space-between, center);
+  @include fonts(1.2rem, 500, 0.5px);
+
+  .item {
+    gap: 1rem;
+    @include flexDisplay(row, center, center);
+    margin-bottom: 10px;
+  }
+}
+
+.dark-button {
+  height: 2.5rem;
+  box-sizing: border-box;
+
+  padding: 5px;
+  border-radius: 4px;
+  border: 2px solid #161616;
+
+  background: #161616;
+  color: white;
+
+  @include flexDisplay(row, center, center);
+  @include fonts(0.9rem, 500, 0.5px);
+
+  transition: all 300ms ease-in-out;
+
+  &:hover {
+    border: 2px solid #161616;
+
+    background: #292929;
+    color: white;
+  }
+}
+
+.light-button {
+  height: 2.5rem;
+  box-sizing: border-box;
+
+  padding: 5px;
+  border-radius: 4px;
+  border: 2px solid $fourthColor;
+
+  background: $fourthColor;
+  color: white;
+
+  @include flexDisplay(row, center, center);
+  @include fonts(0.9rem, 500, 0.5px);
+
+  transition: all 300ms ease-in-out;
+
+  &:hover {
+    border: 2px solid $fourthColor;
+
+    background: white;
+    color: $fourthColor;
+  }
+}
+
+.input-light {
+  width: 100%;
+  height: 2.5rem;
+
+  box-sizing: border-box;
+
+  padding: 5px;
+
+  color: black;
+
+  border-radius: 4px;
+  border: none;
+  outline: 2px solid $fourthColor;
+  @include fonts(1rem, 500, 0.5px);
+
+  &:focus {
+    border: none;
+    outline: 2px solid $primaryColor;
+  }
+}
+
+.input-dark {
+  width: 100%;
+  height: 2.5rem;
+
+  box-sizing: border-box;
+
+  padding: 5px;
+
+  color: white;
+  background: $darkTheme;
+
+  border-radius: 4px;
+  border: none;
+  outline: 2px solid #161616;
+  @include fonts(1rem, 500, 0.5px);
+
+  &:focus {
+    border: none;
+    outline: 2px solid black;
+  }
 }

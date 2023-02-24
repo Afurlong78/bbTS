@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../Form-Styles/Form-Styles.scss";
-import { useRegister } from "../../hooks/useRegsiter";
+import { useRegister } from "../../hooks/useRegister";
 import { registerSchema } from "../../validation/formValidation";
 import { useFormik, FormikHelpers } from "formik";
 import { RegisterType, Visible } from "../../global/Types";

@@ -16,14 +16,16 @@
   width: 8rem;
   height: 2.5rem;
 
-  color: #161616;
-  background: white;
+  color: white;
+  background: #161616;
+  border: 2px solid #161616;
   text-decoration: none;
 
   @include fonts(0.9rem, 700, 0.5px);
 
   &:hover {
-    background-color: #161616;
+    background-color: #292929;
+    border: 2px solid #161616;
     color: white;
   }
 }
@@ -34,12 +36,14 @@
 
   color: white;
   background: $fourthColor;
+  border: 2px solid $fourthColor;
   text-decoration: none;
 
   @include fonts(0.9rem, 700, 0.5px);
 
   &:hover {
     background-color: white;
+    border: 2px solid $fourthColor;
     color: $fourthColor;
   }
 }

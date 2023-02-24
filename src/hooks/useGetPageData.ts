@@ -4,22 +4,21 @@ import { useBudgetContext } from "../context/BudgetProvider";
 import axios from "axios";
 
 export const useGetPageData = () => {
-  const { setBudget } = useBudgetContext();
-  const { setExpenses, setSpent } = useExpenseContext();
+  const { setBudget, setExpenses } = useBudgetContext();
+  const { setSpent } = useExpenseContext();
 
   const token = localStorage.getItem("bb-login-token");
-  const budgetLink = process.env.REACT_APP_USER_BUDGETS!;
+  const budgetLink = process.env.REACT_APP_USER_ON_LOAD!;
 
   function getData() {
     axios
-      .get(budgetLink, {
+      .get("http://localhost:5000/api/posts/budgets/budgetsOnLoad", {
         headers: {
           ["Authorization"]: token,
         },
       })
       .then((res) => {
-        // console.log(res);
-
+        // console.log(res, "res");
         const copy = [...res.data.data.expenses];
         const sum = copy.reduce((acc, curr) => acc + curr.value, 0);
 
@@ -32,7 +31,7 @@ export const useGetPageData = () => {
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, "err");
       });
   }
 

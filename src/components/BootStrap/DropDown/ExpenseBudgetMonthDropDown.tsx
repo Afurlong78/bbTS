@@ -10,7 +10,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-function DropDown({ month, setMonth }: DropDownType) {
+function ExpenseBudgetMonthDropDown({ month, setMonth }: DropDownType) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { theme } = useSignInContext();
 
@@ -21,7 +21,6 @@ function DropDown({ month, setMonth }: DropDownType) {
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
         <DropdownToggle
           caret
-          // style={theme ? { background: "black" } : { background: "red" }}
           className={
             theme ? "dd-dark-primary-button" : "dd-light-primary-button"
           }
@@ -60,4 +59,4 @@ function DropDown({ month, setMonth }: DropDownType) {
   );
 }
 
-export default DropDown;
+export default ExpenseBudgetMonthDropDown;
