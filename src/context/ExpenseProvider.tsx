@@ -11,21 +11,17 @@ export const useExpenseContext = () => {
 };
 
 export function ExpenseProvider({ children }: ContextProps) {
-  const token = localStorage.getItem("bb-login-token");
   const { budget, expenses, setExpenses } = useBudgetContext();
-
   const [expenseInput, setExpenseInput] = useState<string>("");
   const [spent, setSpent] = useState<number>(0);
-  // const spent = useMemo(() => {
-  //   return expenses.reduce((acc, curr)=> acc + curr.value, 0)
-  // }, [expenses]);
 
+  const token = localStorage.getItem("bb-login-token");
   const expenseLink = process.env.REACT_APP_USER_EXPENSES!;
   const expenseDeleteLink = process.env.REACT_APP_USER_EXPENSES_DELETE!;
   const expenseDeleteAllLink = process.env.REACT_APP_USER_EXPENSES_DELETE_ALL!;
   const budgetLink = process.env.REACT_APP_USER_BUDGETS_UPDATED!;
 
-  function postExpense(value: number, month: string) {
+  function postExpense(value: number, month: string, category: string) {
     if (isNaN(value) || value === 0) return;
 
     setExpenseInput("");
@@ -36,7 +32,7 @@ export function ExpenseProvider({ children }: ContextProps) {
         {
           value: value,
           month: month,
-          category: "Entertainment",
+          category: category,
           id: nanoid(),
         },
         {
@@ -101,7 +97,7 @@ export function ExpenseProvider({ children }: ContextProps) {
   function removeAllExpenses(month: string) {
     axios
       .post(
-        expenseDeleteAllLink,
+        "http://localhost:5000/api/posts/expenses/delete/deleteAll",
         {
           month: month,
         },
@@ -112,7 +108,14 @@ export function ExpenseProvider({ children }: ContextProps) {
         }
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        if (
+          res.data.data.acknowledged === true &&
+          res.data.data.modifiedCount === 1
+        ) {
+          setExpenses([]);
+          setSpent(0);
+        }
       })
       .catch((err) => {
         console.log(err);

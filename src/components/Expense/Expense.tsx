@@ -1,12 +1,13 @@
-import React, { useCallback, useState } from "react";
 import { useBudgetContext } from "../../context/BudgetProvider";
+import { useExpenseContext } from "../../context/ExpenseProvider";
 import { useSignInContext } from "../../context/SignInProvider";
 import { AnimatePresence } from "framer-motion";
 import ExpenseItem from "./ExpenseItem";
 import "./Expense-Styles.scss";
 
 function Expense() {
-  const { expenses } = useBudgetContext();
+  const { budget, expenses } = useBudgetContext();
+  const { removeAllExpenses } = useExpenseContext();
   const { theme } = useSignInContext();
 
   return (
@@ -25,7 +26,10 @@ function Expense() {
               : "category-display-end fourth-text"
           }
         >
-          <button className={theme ? "dark-button" : "light-button"}>
+          <button
+            className={theme ? "dark-button" : "light-button"}
+            onClick={() => removeAllExpenses(budget.month)}
+          >
             Clear Expenses
           </button>
         </div>

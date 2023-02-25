@@ -1,11 +1,11 @@
-import { useState, useMemo } from "react";
-import "./Budget-Styles.scss";
+import { useState } from "react";
 import { useBudgetContext } from "../../context/BudgetProvider";
 import { useExpenseContext } from "../../context/ExpenseProvider";
 import { useSignInContext } from "../../context/SignInProvider";
 import { formatCurrency } from "../../utils/formatCurrency";
-import DropDown from "../BootStrap/DropDown/ExpenseBudgetMonthDropDown";
 import GetBudgetDropDown from "../BootStrap/DropDown/GetBudget";
+import CategoryDropDown from "../BootStrap/DropDown/CategoryDropDown";
+import "./Budget-Styles.scss";
 
 function Budget() {
   const { budget, postBudget, budgetInput, setBudgetInput } =
@@ -13,7 +13,7 @@ function Budget() {
   const { postExpense, spent, expenseInput, setExpenseInput } =
     useExpenseContext();
   const { theme } = useSignInContext();
-  const [month, setMonth] = useState<string>("January");
+  const [category, setCategory] = useState<string>("Entertainment");
   const remaining = budget.value - spent;
 
   return (
@@ -81,7 +81,7 @@ function Budget() {
               type="number"
             />
             <button
-              onClick={() => postBudget(parseInt(budgetInput), month)}
+              onClick={() => postBudget(parseInt(budgetInput), budget.month)}
               className={theme ? "dark-button" : "light-button"}
             >
               Submit
@@ -101,7 +101,9 @@ function Budget() {
               value={expenseInput}
             />
             <button
-              onClick={() => postExpense(parseInt(expenseInput), month)}
+              onClick={() =>
+                postExpense(parseInt(expenseInput), budget.month, category)
+              }
               className={theme ? "dark-button" : "light-button"}
             >
               Submit
@@ -110,12 +112,8 @@ function Budget() {
         </div>
 
         <div>
-          <DropDown month={month} setMonth={setMonth} />
+          <CategoryDropDown category={category} setCategory={setCategory} />
         </div>
-        
-        {/* <div>
-          <DropDown month={month} setMonth={setMonth} />
-        </div> */}
       </div>
     </div>
   );

@@ -95,18 +95,22 @@ function Nav() {
             style={{ height: "50%", width: "50%" }}
           />
         </Link>
-        <Link
-          to="/register"
-          className={
-            theme ? `link dark-primary-button` : `link light-primary-button`
-          }
-        >
-          Register
-          <FontAwesomeIcon
-            icon={faAddressCard}
-            style={{ height: "50%", width: "50%" }}
-          />
-        </Link>
+
+        {signedIn ? null : (
+          <Link
+            to="/register"
+            className={
+              theme ? `link dark-primary-button` : `link light-primary-button`
+            }
+          >
+            Register
+            <FontAwesomeIcon
+              icon={faAddressCard}
+              style={{ height: "50%", width: "50%" }}
+            />
+          </Link>
+        )}
+
         {signedIn ? (
           <button
             className={theme ? `logout-btn-dark ` : `logout-btn-light `}
@@ -162,17 +166,20 @@ function Nav() {
               style={{ height: "50%", width: "50%" }}
             />
           </Link>
-          <Link
-            to="/register"
-            className="link"
-            onClick={() => setOpenMobile(false)}
-          >
-            Register
-            <FontAwesomeIcon
-              icon={faAddressCard}
-              style={{ height: "50%", width: "50%" }}
-            />
-          </Link>
+
+          {signedIn ? null : (
+            <Link
+              to="/register"
+              className="link"
+              onClick={() => setOpenMobile(false)}
+            >
+              Register
+              <FontAwesomeIcon
+                icon={faAddressCard}
+                style={{ height: "50%", width: "50%" }}
+              />
+            </Link>
+          )}
 
           {signedIn ? (
             <button className="link" onClick={mobileLogoutHandler}>

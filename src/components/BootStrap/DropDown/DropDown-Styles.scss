@@ -13,7 +13,7 @@
 }
 
 .dd-dark-primary-button {
-  width: 8rem;
+  width: 10rem;
   height: 2.5rem;
 
   color: white;
@@ -21,6 +21,7 @@
   border: 2px solid #161616;
   text-decoration: none;
 
+  transition: 300ms ease-in-out;
   @include fonts(0.9rem, 700, 0.5px);
 
   &:hover {
@@ -31,7 +32,7 @@
 }
 
 .dd-light-primary-button {
-  width: 8rem;
+  width: 10rem;
   height: 2.5rem;
 
   color: white;
@@ -39,6 +40,7 @@
   border: 2px solid $fourthColor;
   text-decoration: none;
 
+  transition: 300ms ease-in-out;
   @include fonts(0.9rem, 700, 0.5px);
 
   &:hover {

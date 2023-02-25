@@ -2,6 +2,15 @@ import { ReactNode, Dispatch, SetStateAction } from "react";
 // setState example => Dispatch<SetStateAction<Your State>>
 //setPrevState example => (action: number | ((prevState: number) => number)) => void
 
+//test
+
+export type MockTest = {
+  month?: string;
+  budget?: number;
+  expenses: Expense[];
+  user?: string;
+};
+
 //for setting up context
 export type ContextProps = {
   children: ReactNode;
@@ -28,7 +37,7 @@ export type Budget = {
 export type ExpenseTypes = {
   expenseInput: string;
   setExpenseInput: Dispatch<SetStateAction<string>>;
-  postExpense: (value: number, month: string) => void;
+  postExpense: (value: number, month: string, category: string) => void;
   removeExpense: (id: string, month: string) => void;
   removeAllExpenses: (month: string) => void;
   setSpent: Dispatch<SetStateAction<number>>;

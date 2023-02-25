@@ -3,7 +3,6 @@ import { useSignInContext } from "../../../context/SignInProvider";
 import { useBudgetContext } from "../../../context/BudgetProvider";
 import { useExpenseContext } from "../../../context/ExpenseProvider";
 import axios from "axios";
-// import "../../global/Styles.scss";
 import "./DropDown-Styles.scss";
 import {
   Dropdown,
@@ -13,11 +12,11 @@ import {
 } from "reactstrap";
 
 function GetBudgetDropDown() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [ddMonth, setDdMonth] = useState<string>("January");
   const { setBudget, setExpenses } = useBudgetContext();
   const { setSpent } = useExpenseContext();
   const { theme } = useSignInContext();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [month, setMonth] = useState<string>("January");
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
@@ -25,7 +24,7 @@ function GetBudgetDropDown() {
   const token = localStorage.getItem("bb-login-token");
 
   function getData(month: string) {
-    setDdMonth(month);
+    setMonth(month);
 
     axios
       .get("http://localhost:5000/api/posts/budgets/getMonth", {
@@ -57,7 +56,7 @@ function GetBudgetDropDown() {
             theme ? "dd-dark-primary-button" : "dd-light-primary-button"
           }
         >
-          {ddMonth}
+          {month}
         </DropdownToggle>
         <DropdownMenu className="dropdown-view">
           <DropdownItem header>Set your month...</DropdownItem>
