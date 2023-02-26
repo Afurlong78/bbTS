@@ -3,8 +3,8 @@ import { useBudgetContext } from "../../context/BudgetProvider";
 import { useExpenseContext } from "../../context/ExpenseProvider";
 import { useSignInContext } from "../../context/SignInProvider";
 import { formatCurrency } from "../../utils/formatCurrency";
-import GetBudgetDropDown from "../BootStrap/DropDown/GetBudget";
-import CategoryDropDown from "../BootStrap/DropDown/CategoryDropDown";
+import GetBudgetDropDown from "../DropDown/GetBudgetDropDown";
+import CategoryDropDown from "../DropDown/CategoryDropDown";
 import "./Budget-Styles.scss";
 
 function Budget() {

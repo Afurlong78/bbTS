@@ -40,6 +40,8 @@ function BudgetUI() {
           <Budget />
 
           <Expense />
+
+          {/* Comparison */}
         </div>
       )}
     </div>

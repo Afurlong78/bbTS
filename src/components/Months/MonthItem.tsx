@@ -12,7 +12,7 @@ function MonthItem(props: MonthItemProps) {
   return (
     <div
       className={
-        theme ? "month-card-dark dark-text" : "month-card-light fourth-text"
+        theme ? "month-card-dark light-text" : "month-card-light dark-text"
       }
       id={props.index.toString()}
     >

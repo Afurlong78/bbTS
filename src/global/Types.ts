@@ -25,6 +25,7 @@ export type BudgetTypes = {
   postBudget: (value: number, month: string) => void;
   expenses: Expense[];
   setExpenses: (value: Expense[]) => void;
+  expensesBreakDown: ExpensesBreakDown;
 };
 
 export type Budget = {
@@ -53,6 +54,21 @@ export type Expense = {
 export type ExpenseItemTypeProps = {
   expense: Expense;
 };
+
+export type ExpenseBreakDownType = {
+  entertainment: number;
+  groceries: number;
+  bills: number;
+  other: number;
+};
+
+export interface ExpensesBreakDown {
+  [key: string]: number;
+  Entertainment: number;
+  Groceries: number;
+  Bills: number;
+  Other: number;
+}
 
 //For Months Provider
 

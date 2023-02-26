@@ -34,22 +34,37 @@
 
   border-radius: 8px;
 
+  position: relative;
+
   overflow: hidden;
 
   background: rgba(0, 0, 0, 0.6);
   transition: all 300ms ease-in-out;
 
   h3 {
+    height: 50px;
+    width: 100%;
+
+    background: white;
+
     padding: 5px;
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 
     @include fonts(1.3rem, 700, 0.5px);
     @include flexDisplay(column, center, center);
   }
 
   .inner-card {
-    height: 100%;
+    height: calc(100% - 50px);
     width: 100%;
+
+    position: absolute;
+    top: 50px;
+    left: 0px;
 
     @include flexDisplay(row, center, center);
     @include fonts(1rem, 700, 0.5px);
@@ -64,22 +79,37 @@
 
   border-radius: 8px;
 
+  position: relative;
+
   overflow: hidden;
 
   background: rgba(0, 0, 0, 0.15);
   transition: all 300ms ease-in-out;
 
   h3 {
+    height: 50px;
+    width: 100%;
+
+    background: $fourthColor;
+
     padding: 5px;
     border-bottom: 2px solid;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 
     @include fonts(1.3rem, 700, 0.5px);
     @include flexDisplay(column, center, center);
   }
 
   .inner-card {
-    height: 100%;
+    height: calc(100% - 50px);
     width: 100%;
+
+    position: absolute;
+    top: 50px;
+    left: 0px;
 
     @include flexDisplay(row, center, center);
     @include fonts(1rem, 700, 0.5px);

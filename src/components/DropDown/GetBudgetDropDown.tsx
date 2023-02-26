@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useSignInContext } from "../../../context/SignInProvider";
-import { useBudgetContext } from "../../../context/BudgetProvider";
-import { useExpenseContext } from "../../../context/ExpenseProvider";
+import { useSignInContext } from "../../context/SignInProvider";
+import { useBudgetContext } from "../../context/BudgetProvider";
+import { useExpenseContext } from "../../context/ExpenseProvider";
 import axios from "axios";
 import "./DropDown-Styles.scss";
 import {
@@ -18,10 +18,9 @@ function GetBudgetDropDown() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [month, setMonth] = useState<string>("January");
 
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
-
-  const monthLink = process.env.REACT_APP_USER_BUDGETS_MONTH!;
   const token = localStorage.getItem("bb-login-token");
+
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   function getData(month: string) {
     setMonth(month);

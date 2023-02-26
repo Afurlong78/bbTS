@@ -25,7 +25,7 @@ export function MonthsProvider({ children }: ContextProps) {
     { month: "June", value: 0 },
     { month: "July", value: 0 },
     { month: "August", value: 0 },
-    { month: "Spetember", value: 0 },
+    { month: "September", value: 0 },
     { month: "October", value: 0 },
     { month: "November", value: 0 },
     { month: "December", value: 0 },

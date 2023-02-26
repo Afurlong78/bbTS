@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState, useContext, createContext, useMemo } from "react";
 import {
   ContextProps,
   BudgetTypes,
   Budget,
   Expense,
-  MockTest,
+  ExpensesBreakDown,
 } from "../global/Types";
 import axios from "axios";
 
@@ -16,6 +16,8 @@ export const useBudgetContext = () => {
 
 export function BudgetProvider({ children }: ContextProps) {
   const token = localStorage.getItem("bb-login-token");
+  const budgetLink = process.env.REACT_APP_USER_BUDGETS!;
+
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [budgetInput, setBudgetInput] = useState<string>("");
   const [budget, setBudget] = useState<Budget>({
@@ -23,7 +25,21 @@ export function BudgetProvider({ children }: ContextProps) {
     month: "",
   });
 
-  const budgetLink = process.env.REACT_APP_USER_BUDGETS!;
+  const expensesBreakDown = useMemo(() => {
+    const ex = [...expenses];
+    const breakDown: ExpensesBreakDown = {
+      Entertainment: 0,
+      Groceries: 0,
+      Bills: 0,
+      Other: 0,
+    };
+
+    ex.forEach((item) => {
+      breakDown[item.category] += item.value;
+    });
+
+    return breakDown;
+  }, [expenses]);
 
   function postBudget(value: number, month: string) {
     if (isNaN(value) || value === 0) return;
@@ -43,7 +59,7 @@ export function BudgetProvider({ children }: ContextProps) {
         }
       )
       .then((response) => {
-        console.log(response, "response");
+        // console.log(response, "response");
         setBudget({
           value: response.data.data.budget,
           month: response.data.data.month,
@@ -67,6 +83,7 @@ export function BudgetProvider({ children }: ContextProps) {
         setBudgetInput,
         expenses,
         setExpenses,
+        expensesBreakDown,
       }}
     >
       {children}

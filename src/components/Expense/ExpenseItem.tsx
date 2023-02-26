@@ -15,6 +15,7 @@ function ExpenseItem(props: ExpenseItemTypeProps) {
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

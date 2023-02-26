@@ -1,8 +1,16 @@
 @import "../../global/Styles.scss";
 
 //expense
+.container-wrapper-expenses {
+  height: 100%;
+  width: 100%;
+
+  gap: 1rem;
+
+  @include flexDisplay(row, space-between, center);
+}
 .expense-container {
-  height: 400px;
+  height: 500px;
   width: 100%;
 
   overflow-x: hidden;
@@ -45,6 +53,15 @@
 
     gap: 0.2rem;
   }
+
+  .chart-container {
+    height: 400px;
+    width: 400px;
+
+    background: red;
+
+    @include flexDisplay(row, center, center);
+  }
 }
 
 .category-display-end {
@@ -62,7 +79,7 @@
 //expense item
 
 .expense-item {
-  height: 40px;
+  height: 50px;
   width: 100%;
 
   box-sizing: border-box;

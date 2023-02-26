@@ -1,0 +1,9 @@
+@import "../../../global/Styles.scss";
+
+.chart-container {
+  height: 500px;
+  aspect-ratio: 1/1;
+
+  @include flexDisplay(row, center, center);
+  @include fonts(1rem, 700, 0.5px);
+}

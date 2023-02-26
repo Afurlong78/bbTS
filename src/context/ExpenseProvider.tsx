@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext, createContext, useMemo } from "react";
+import { useState, useContext, createContext } from "react";
 import { useBudgetContext } from "./BudgetProvider";
-import { ExpenseTypes, Expense, ContextProps } from "../global/Types";
+import { ExpenseTypes, ContextProps } from "../global/Types";
 import { nanoid } from "nanoid";
 import axios from "axios";
 
@@ -11,15 +11,13 @@ export const useExpenseContext = () => {
 };
 
 export function ExpenseProvider({ children }: ContextProps) {
-  const { budget, expenses, setExpenses } = useBudgetContext();
-  const [expenseInput, setExpenseInput] = useState<string>("");
-  const [spent, setSpent] = useState<number>(0);
-
   const token = localStorage.getItem("bb-login-token");
   const expenseLink = process.env.REACT_APP_USER_EXPENSES!;
   const expenseDeleteLink = process.env.REACT_APP_USER_EXPENSES_DELETE!;
-  const expenseDeleteAllLink = process.env.REACT_APP_USER_EXPENSES_DELETE_ALL!;
-  const budgetLink = process.env.REACT_APP_USER_BUDGETS_UPDATED!;
+
+  const { expenses, setExpenses } = useBudgetContext();
+  const [expenseInput, setExpenseInput] = useState<string>("");
+  const [spent, setSpent] = useState<number>(0);
 
   function postExpense(value: number, month: string, category: string) {
     if (isNaN(value) || value === 0) return;
@@ -78,7 +76,6 @@ export function ExpenseProvider({ children }: ContextProps) {
         // console.log(res);
         if (
           res.data.data.acknowledged === true &&
-          res.data.data.matchedCount === 1 &&
           res.data.data.modifiedCount === 1
         ) {
           const ex = [...expenses];
