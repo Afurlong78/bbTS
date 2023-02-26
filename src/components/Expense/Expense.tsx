@@ -3,8 +3,8 @@ import { useExpenseContext } from "../../context/ExpenseProvider";
 import { useSignInContext } from "../../context/SignInProvider";
 import { AnimatePresence } from "framer-motion";
 import ExpenseItem from "./ExpenseItem";
-import DoughnutChart from "./Chart/DoughnutChart";
-import BarChart from "./Chart/BarChart";
+import DoughnutChart from "../Chart/DoughnutChart";
+import BarChart from "../Chart/BarChart";
 import "./Expense-Styles.scss";
 
 function Expense() {

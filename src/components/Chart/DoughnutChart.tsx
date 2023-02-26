@@ -1,16 +1,9 @@
-import {
-  Chart as ChartJS,
-  BarElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { useBudgetContext } from "../../../context/BudgetProvider";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut, Line } from "react-chartjs-2";
+import { useBudgetContext } from "../../context/BudgetProvider";
 import "./Chart-Styles.scss";
 
-function BarChart() {
+function DoughnutChart() {
   const { expensesBreakDown } = useBudgetContext();
 
   const materials = [
@@ -47,13 +40,13 @@ function BarChart() {
 
   const options = {};
 
-  ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+  ChartJS.register(ArcElement, Tooltip, Legend);
 
   return (
     <div className="chart-container">
-      <Bar data={data} options={options} />
+      <Doughnut data={data} options={options} />
     </div>
   );
 }
 
-export default BarChart;
+export default DoughnutChart;
