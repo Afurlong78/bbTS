@@ -1,12 +1,18 @@
-import { useState, useEffect } from "react";
-import { useSignInContext } from "../../context/SignInProvider";
-import { useMonthsContext } from "../../context/MonthsProvider";
+import { useEffect } from "react";
+import { useBudgetContext } from "../../context/BudgetProvider";
+import { useGetMonthData } from "../../hooks/useGetMonth";
 import MonthItem from "./MonthItem";
 import "./Months-Styles.scss";
 import "../../global/Styles.scss";
 
 function Months() {
-  const { months } = useMonthsContext();
+  const { months } = useBudgetContext();
+  // const { months } = useMonthsContext();
+  const { getData } = useGetMonthData();
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="months-container">

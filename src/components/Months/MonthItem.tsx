@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
 import { MonthItemProps } from "../../global/Types";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { useSignInContext } from "../../context/SignInProvider";
-import { useMonthsContext } from "../../context/MonthsProvider";
 import "./Months-Styles.scss";
 import "../../global/Styles.scss";
 

@@ -26,6 +26,8 @@ export type BudgetTypes = {
   expenses: Expense[];
   setExpenses: (value: Expense[]) => void;
   expensesBreakDown: ExpensesBreakDown;
+  months: Month[];
+  setMonths: Dispatch<SetStateAction<Month[]>>;
 };
 
 export type Budget = {
@@ -70,6 +72,14 @@ export interface ExpensesBreakDown {
   Other: number;
 }
 
+//Comparison Provider
+
+export type ComparisonType = {
+  getStart: () => void;
+  getEnd: () => void;
+  getData: () => void;
+};
+
 //For Months Provider
 
 export type Month = { month: String; value: number };
@@ -84,6 +94,11 @@ export type MonthItemProps = {
   index: number;
 };
 
+export type MonthsResponseType = {
+  budget: number;
+  expenses: Expense[];
+  month: string;
+};
 //for sign in provider
 export type SignedInType = {
   theme: boolean;
@@ -114,3 +129,20 @@ export type ErrorOrLoading = {
   errorMessage?: string;
   loading?: boolean;
 };
+
+// utils
+export interface MonthsKeysType {
+  [key: string]: number;
+  January: number;
+  February: number;
+  March: number;
+  April: number;
+  May: number;
+  June: number;
+  July: number;
+  August: number;
+  Spetember: number;
+  October: number;
+  November: number;
+  December: number;
+}

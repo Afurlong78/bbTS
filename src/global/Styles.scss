@@ -9,6 +9,7 @@ $lightTheme: white;
 $lightText: black;
 $darkTheme: #292929;
 $darkText: white;
+$grey: rgb(230, 230, 230);
 
 $grayBackground: rgb(233, 233, 233);
 
@@ -72,6 +73,67 @@ $gradient-color-three: #586fbb00;
 
 //themeing
 
+//moblile btns
+.dark-primary-mobile-button {
+  color: white;
+  background-color: #161616;
+  text-decoration: none;
+
+  height: 2.5rem;
+  width: 8rem;
+
+  box-sizing: border-box;
+  padding: 5px 10px;
+
+  cursor: pointer;
+
+  gap: 0.7rem;
+
+  @include fonts(1rem, 600, 0.5px);
+  @include flexDisplay(row, space-between, center);
+
+  border-radius: 4px;
+  border: 2px solid #161616;
+
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #161616;
+  }
+}
+
+.light-primary-mobile-button {
+  color: white;
+  background-color: $fourthColor;
+  text-decoration: none;
+
+  height: 2.5rem;
+  width: 8rem;
+
+  box-sizing: border-box;
+  padding: 5px 10px;
+
+  cursor: pointer;
+
+  gap: 0.7rem;
+
+  @include fonts(1rem, 600, 0.5px);
+  @include flexDisplay(row, space-between, center);
+
+  border-radius: 4px;
+  border: none;
+
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    background-color: $primaryColor;
+    color: white;
+  }
+}
+
+//nav btn themese
 .dark-primary-button {
   color: white;
   text-decoration: none;
@@ -149,62 +211,122 @@ $gradient-color-three: #586fbb00;
     linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
+$darkGradient: linear-gradient(
+    148deg,
+    rgba(15, 15, 15, 0.04) 0%,
+    rgba(15, 15, 15, 0.04) 35%,
+    rgba(113, 113, 113, 0.04) 35%,
+    rgba(113, 113, 113, 0.04) 42%,
+    rgba(210, 210, 210, 0.04) 42%,
+    rgba(210, 210, 210, 0.04) 100%
+  ),
+  linear-gradient(
+    70deg,
+    rgba(15, 15, 15, 0.04) 0%,
+    rgba(15, 15, 15, 0.04) 25%,
+    rgba(113, 113, 113, 0.04) 25%,
+    rgba(113, 113, 113, 0.04) 30%,
+    rgba(210, 210, 210, 0.04) 30%,
+    rgba(210, 210, 210, 0.04) 100%
+  ),
+  linear-gradient(
+    65deg,
+    rgba(15, 15, 15, 0.04) 0%,
+    rgba(15, 15, 15, 0.04) 13%,
+    rgba(113, 113, 113, 0.04) 13%,
+    rgba(113, 113, 113, 0.04) 27%,
+    rgba(210, 210, 210, 0.04) 27%,
+    rgba(210, 210, 210, 0.04) 100%
+  ),
+  linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
+
 .light-gradient {
   background-image: linear-gradient(
-      112.5deg,
-      rgb(214, 214, 214) 0%,
-      rgb(214, 214, 214) 10%,
-      rgb(195, 195, 195) 10%,
-      rgb(195, 195, 195) 53%,
-      rgb(176, 176, 176) 53%,
-      rgb(176, 176, 176) 55%,
-      rgb(157, 157, 157) 55%,
-      rgb(157, 157, 157) 60%,
-      rgb(137, 137, 137) 60%,
-      rgb(137, 137, 137) 88%,
-      rgb(118, 118, 118) 88%,
-      rgb(118, 118, 118) 91%,
-      rgb(99, 99, 99) 91%,
-      rgb(99, 99, 99) 100%
+      23deg,
+      rgba(202, 202, 202, 0.02) 0%,
+      rgba(202, 202, 202, 0.02) 13%,
+      transparent 13%,
+      transparent 80%,
+      rgba(11, 11, 11, 0.02) 80%,
+      rgba(11, 11, 11, 0.02) 100%
     ),
     linear-gradient(
-      157.5deg,
-      rgb(214, 214, 214) 0%,
-      rgb(214, 214, 214) 10%,
-      rgb(195, 195, 195) 10%,
-      rgb(195, 195, 195) 53%,
-      rgb(176, 176, 176) 53%,
-      rgb(176, 176, 176) 55%,
-      rgb(157, 157, 157) 55%,
-      rgb(157, 157, 157) 60%,
-      rgb(137, 137, 137) 60%,
-      rgb(137, 137, 137) 88%,
-      rgb(118, 118, 118) 88%,
-      rgb(118, 118, 118) 91%,
-      rgb(99, 99, 99) 91%,
-      rgb(99, 99, 99) 100%
+      42deg,
+      rgba(98, 98, 98, 0.02) 0%,
+      rgba(98, 98, 98, 0.02) 36%,
+      transparent 36%,
+      transparent 77%,
+      rgba(252, 252, 252, 0.02) 77%,
+      rgba(252, 252, 252, 0.02) 100%
     ),
     linear-gradient(
-      135deg,
-      rgb(214, 214, 214) 0%,
-      rgb(214, 214, 214) 10%,
-      rgb(195, 195, 195) 10%,
-      rgb(195, 195, 195) 53%,
-      rgb(176, 176, 176) 53%,
-      rgb(176, 176, 176) 55%,
-      rgb(157, 157, 157) 55%,
-      rgb(157, 157, 157) 60%,
-      rgb(137, 137, 137) 60%,
-      rgb(137, 137, 137) 88%,
-      rgb(118, 118, 118) 88%,
-      rgb(118, 118, 118) 91%,
-      rgb(99, 99, 99) 91%,
-      rgb(99, 99, 99) 100%
+      286deg,
+      rgba(173, 173, 173, 0.02) 0%,
+      rgba(173, 173, 173, 0.02) 2%,
+      transparent 2%,
+      transparent 12%,
+      rgba(59, 59, 59, 0.02) 12%,
+      rgba(59, 59, 59, 0.02) 100%
     ),
-    linear-gradient(90deg, rgb(195, 195, 195), rgb(228, 228, 228));
+    linear-gradient(
+      77deg,
+      rgba(87, 87, 87, 0.02) 0%,
+      rgba(87, 87, 87, 0.02) 18%,
+      transparent 18%,
+      transparent 55%,
+      rgba(247, 247, 247, 0.02) 55%,
+      rgba(247, 247, 247, 0.02) 100%
+    ),
+    linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
 
-  background-blend-mode: overlay, overlay, overlay, normal;
+  // background-blend-mode: overlay, overlay, overlay, normal;
 }
+
+$lightGradient: linear-gradient(
+    340deg,
+    rgba(76, 76, 76, 0.02) 0%,
+    rgba(76, 76, 76, 0.02) 34%,
+    transparent 34%,
+    transparent 67%,
+    rgba(142, 142, 142, 0.02) 67%,
+    rgba(142, 142, 142, 0.02) 73%,
+    rgba(151, 151, 151, 0.02) 73%,
+    rgba(151, 151, 151, 0.02) 100%
+  ),
+  linear-gradient(
+    320deg,
+    rgba(145, 145, 145, 0.02) 0%,
+    rgba(145, 145, 145, 0.02) 10%,
+    transparent 10%,
+    transparent 72%,
+    rgba(35, 35, 35, 0.02) 72%,
+    rgba(35, 35, 35, 0.02) 76%,
+    rgba(69, 69, 69, 0.02) 76%,
+    rgba(69, 69, 69, 0.02) 100%
+  ),
+  linear-gradient(
+    268deg,
+    rgba(128, 128, 128, 0.02) 0%,
+    rgba(128, 128, 128, 0.02) 5%,
+    transparent 5%,
+    transparent 76%,
+    rgba(78, 78, 78, 0.02) 76%,
+    rgba(78, 78, 78, 0.02) 83%,
+    rgba(224, 224, 224, 0.02) 83%,
+    rgba(224, 224, 224, 0.02) 100%
+  ),
+  linear-gradient(
+    198deg,
+    rgba(25, 25, 25, 0.02) 0%,
+    rgba(25, 25, 25, 0.02) 36%,
+    transparent 36%,
+    transparent 85%,
+    rgba(180, 180, 180, 0.02) 85%,
+    rgba(180, 180, 180, 0.02) 99%,
+    rgba(123, 123, 123, 0.02) 99%,
+    rgba(123, 123, 123, 0.02) 100%
+  ),
+  linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
 
 $blue: #6a84da;
 $blueColor: #39436e;

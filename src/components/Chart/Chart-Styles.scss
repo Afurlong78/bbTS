@@ -1,8 +1,61 @@
 @import "../../global/Styles.scss";
 
-.chart-container {
+.doughnut-chart-container {
   height: 500px;
-  aspect-ratio: 1/1;
+  width: auto;
+
+  margin-top: 20px;
+
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  transition: background 300ms ease-in-out;
+
+  @include flexDisplay(row, space-between, center);
+  @include fonts(1rem, 700, 0.5px);
+
+  @media all and (max-width: 1400px) {
+    width: 100%;
+  }
+
+  .break-down-container {
+    height: calc(100% - 100px);
+    min-width: 200px;
+
+    box-sizing: border-box;
+
+    border-radius: 4px;
+
+    @include fonts(0.9rem, 500, 0.5px);
+    @include flexDisplay(column, space-between, start);
+
+    span {
+      width: 100%;
+      border-radius: 4px;
+      padding: 3px;
+    }
+  }
+}
+
+.break-down-row {
+  @include flexDisplay(row, space-between, center);
+}
+
+.light-chart-bg {
+  background: $grey;
+}
+
+.dark-chart-bg {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.bar-chart-container {
+  height: 400px;
+  aspect-ratio: 2/1;
+
+  box-sizing: border-box;
 
   @include flexDisplay(row, center, center);
   @include fonts(1rem, 700, 0.5px);

@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import Budget from "../Budget/Budget";
-import Expense from "../Expense/Expense";
-import Months from "../Months/Months";
-import "./BudgetUI-Styles.scss";
-import "../../global/Styles.scss";
 import { useSignInContext } from "../../context/SignInProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { useGetPageData } from "../../hooks/useGetPageData";
+import Budget from "../Budget/Budget";
+import Expense from "../Expense/Expense";
+import Months from "../Months/Months";
+import Compare from "../Comparison/Compare";
+import "./BudgetUI-Styles.scss";
+import "../../global/Styles.scss";
 
 function BudgetUI() {
   const { theme } = useSignInContext();
@@ -19,7 +20,13 @@ function BudgetUI() {
   }, []);
 
   return (
-    <div className="budget-ui-container">
+    <div
+      className={
+        theme
+          ? "dark-gradient budget-ui-container"
+          : "light-gradient budget-ui-container"
+      }
+    >
       {!storedToken ? (
         <div className="locked">
           <div className="locked-content">
@@ -41,7 +48,7 @@ function BudgetUI() {
 
           <Expense />
 
-          {/* Comparison */}
+          <Compare />
         </div>
       )}
     </div>

@@ -50,7 +50,7 @@ function BarChart() {
   ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
   return (
-    <div className="chart-container">
+    <div className="bar-chart-container">
       <Bar data={data} options={options} />
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState, useContext, createContext } from "react";
 import { useBudgetContext } from "./BudgetProvider";
 import { ExpenseTypes, ContextProps } from "../global/Types";
+import { monthKeys } from "../utils/monthKeys";
 import { nanoid } from "nanoid";
 import axios from "axios";
 
@@ -15,7 +16,8 @@ export function ExpenseProvider({ children }: ContextProps) {
   const expenseLink = process.env.REACT_APP_USER_EXPENSES!;
   const expenseDeleteLink = process.env.REACT_APP_USER_EXPENSES_DELETE!;
 
-  const { expenses, setExpenses } = useBudgetContext();
+  const { expenses, months, budget, setExpenses, setMonths } =
+    useBudgetContext();
   const [expenseInput, setExpenseInput] = useState<string>("");
   const [spent, setSpent] = useState<number>(0);
 
@@ -52,6 +54,13 @@ export function ExpenseProvider({ children }: ContextProps) {
 
         setSpent(sum);
         setExpenses(copy);
+
+        const m = [...months];
+        if (m[monthKeys[budget.month]]) {
+          m[monthKeys[budget.month]].value = budget.value - sum;
+        }
+
+        setMonths(m);
       })
       .catch((err) => {
         console.log(err);
@@ -84,6 +93,14 @@ export function ExpenseProvider({ children }: ContextProps) {
 
           setExpenses(filtered);
           setSpent(sum);
+
+          const m = [...months];
+
+          if (m[monthKeys[budget.month]]) {
+            m[monthKeys[budget.month]].value = budget.value - sum;
+          }
+
+          setMonths(m);
         }
       })
       .catch((err) => {
@@ -112,6 +129,12 @@ export function ExpenseProvider({ children }: ContextProps) {
         ) {
           setExpenses([]);
           setSpent(0);
+
+          const m = [...months];
+
+          if (m[monthKeys[budget.month]]) {
+            m[monthKeys[budget.month]].value = budget.value - 0;
+          }
         }
       })
       .catch((err) => {

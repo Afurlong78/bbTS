@@ -1,4 +1,6 @@
-export const monthKeys= {
+import { MonthsKeysType } from "../global/Types";
+
+export const monthKeys: MonthsKeysType = {
   January: 0,
   February: 1,
   March: 2,

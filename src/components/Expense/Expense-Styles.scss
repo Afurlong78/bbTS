@@ -8,14 +8,19 @@
   gap: 1rem;
 
   @include flexDisplay(row, space-between, center);
+
+  @media all and (max-width: 1400px) {
+    @include flexDisplay(column, space-between, center);
+  }
 }
+
 .expense-container {
   height: 500px;
   width: 100%;
 
   overflow-x: hidden;
 
-  margin-top: 1rem;
+  margin-top: 20px;
 
   @include flexDisplay(column, start, center);
 
@@ -77,13 +82,14 @@
 }
 
 //expense item
-
 .expense-item {
-  height: 50px;
+  min-height: 50px;
   width: 100%;
 
   box-sizing: border-box;
   padding: 5px;
+
+  overflow: hidden;
 
   border-radius: 4px;
 
@@ -107,7 +113,7 @@
 }
 
 .light-expense-item {
-  background: rgba(0, 0, 0, 0.15);
+  background: $grey;
   color: $fourthColor;
 }
 

@@ -144,11 +144,22 @@ function Nav() {
         placement="end"
         className={theme ? `dark` : `light`}
       >
-        <button onClick={() => setOpenMobile(false)} className="close-mobile">
+        <button
+          onClick={() => setOpenMobile(false)}
+          className={theme ? `close-mobile cdm` : `close-mobile clm`}
+        >
           X
         </button>
         <div className="offcanvas-body">
-          <Link to="/" className="link" onClick={() => setOpenMobile(false)}>
+          <Link
+            to="/"
+            className={
+              theme
+                ? "dark-primary-mobile-button"
+                : "light-primary-mobile-button"
+            }
+            onClick={() => setOpenMobile(false)}
+          >
             Home
             <FontAwesomeIcon
               icon={faHouse}
@@ -157,7 +168,11 @@ function Nav() {
           </Link>
           <Link
             to="/budget"
-            className="link"
+            className={
+              theme
+                ? "dark-primary-mobile-button"
+                : "light-primary-mobile-button"
+            }
             onClick={() => setOpenMobile(false)}
           >
             Budget
@@ -170,7 +185,11 @@ function Nav() {
           {signedIn ? null : (
             <Link
               to="/register"
-              className="link"
+              className={
+                theme
+                  ? "dark-primary-mobile-button"
+                  : "light-primary-mobile-button"
+              }
               onClick={() => setOpenMobile(false)}
             >
               Register
@@ -182,7 +201,14 @@ function Nav() {
           )}
 
           {signedIn ? (
-            <button className="link" onClick={mobileLogoutHandler}>
+            <button
+              className={
+                theme
+                  ? "dark-primary-mobile-button"
+                  : "light-primary-mobile-button"
+              }
+              onClick={mobileLogoutHandler}
+            >
               Logout
               <FontAwesomeIcon
                 icon={faRightToBracket}
@@ -192,7 +218,11 @@ function Nav() {
           ) : (
             <Link
               to="/login"
-              className="link"
+              className={
+                theme
+                  ? "dark-primary-mobile-button"
+                  : "light-primary-mobile-button"
+              }
               onClick={() => setOpenMobile(false)}
             >
               Login
