@@ -84,14 +84,29 @@
       //   0 0 0.2em $secondaryColor;
 
       animation: pageItem 900ms ease-in-out;
+
+      @media all and (max-width: 450px) {
+        @include fonts(2rem, 700, 0.5px);
+      }
     }
 
-    p {
-      padding: 0px 40px;
-      @include fonts(1.3rem, 600, 0.5px);
-      // text-shadow: 1px 1px 2px #e66464, 0 0 1em $primaryColor,
-      //   0 0 0.2em $secondaryColor;
-      animation: pageItem 1200ms ease-in-out;
+    div {
+      @include flexDisplay(row, center, center);
+      width: 100%;
+
+      p {
+        padding: 0px 40px;
+
+        @include fonts(1.3rem, 500, 0.5px);
+        // text-shadow: 1px 1px 2px #e66464, 0 0 1em $primaryColor,
+        //   0 0 0.2em $secondaryColor;
+        animation: pageItem 1200ms ease-in-out;
+
+        @media all and (max-width: 450px) {
+          @include fonts(1rem, 500, 0.5px);
+          padding: 0px 20px;
+        }
+      }
     }
   }
 
@@ -152,6 +167,14 @@
     @media all and (max-width: 1024px) {
       @include flexDisplay(row, center, center);
     }
+
+    @media all and (max-width: 500px) {
+      @include fonts(1.5rem, 500, 0.5px);
+    }
+
+    @media all and (max-width: 350px){
+      @include fonts(1.1rem, 500, 0.5px);
+    }
   }
 
   p {
@@ -162,6 +185,10 @@
 
     margin-bottom: 30px;
     padding-bottom: 10px;
+
+    @media all and (max-width: 350px){
+      @include fonts(0.8rem, 500, 0.5px);
+    }
   }
 }
 
@@ -178,6 +205,10 @@
 
     margin-bottom: 30px;
     margin-top: 10px;
+
+    @media all and (max-width: 350px){
+      @include fonts(1.1rem, 500, 0.5px);
+    }
   }
 
   @include flexDisplay(row, space-between, center);

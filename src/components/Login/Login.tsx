@@ -109,10 +109,20 @@ function Login() {
           </div>
 
           <div className="submit-forgot-row">
-            <button type="submit" className="link">
+            <button
+              type="submit"
+              className={theme ? "link-dark-submit" : "link-light"}
+            >
               Submit
             </button>
-            <Link to="/forgot-password" className="link">
+            <Link
+              to="/forgot-password"
+              className={
+                theme
+                  ? "forgot-password-anchor-dark"
+                  : "forgot-password-anchor-light"
+              }
+            >
               Forgot Password?
             </Link>
           </div>

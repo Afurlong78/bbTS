@@ -8,7 +8,7 @@ function Background() {
 
   useEffect(() => {
     const array: ReactNode[] = [];
-    const n = 20;
+    const n = 15;
 
     for (let i = 0; i < n; i++) {
       let x = Math.floor(Math.random() * 91) + 2;

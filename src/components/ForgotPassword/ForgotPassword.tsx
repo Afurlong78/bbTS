@@ -1,36 +1,28 @@
-import { useState } from "react";
 import "../Form-Styles/Form-Styles.scss";
-import { useRegister } from "../../hooks/useRegister";
-import { registerSchema } from "../../validation/formValidation";
+import { forgotPasswordSchema } from "../../validation/formValidation";
 import { useFormik, FormikHelpers } from "formik";
-import { RegisterType, Visible } from "../../global/Types";
+import { ForgotPasswordType } from "../../global/Types";
 import { useSignInContext } from "../../context/SignInProvider";
 import BackgroundComponent from "../Form-Styles/BackgroundComponent";
-const eye = require("../../assets/Icons/Eye.png");
+import { useForgotPassword } from "../../hooks/useForgotPassword";
 
 function ForgotPassword() {
   const { theme } = useSignInContext();
-  const { register, success, setSuccess } = useRegister();
-  const [visible, setVisible] = useState<Visible>({
-    password: false,
-    confirm: false,
-  });
+  const { resetPassword, success, setSuccess } = useForgotPassword();
 
   const { values, handleChange, handleSubmit, errors, touched, handleBlur } =
     useFormik({
       initialValues: {
-        email: "",
-        password: "",
-        confirm: "",
+        user: "",
       },
       onSubmit: (
-        values: RegisterType,
-        { setSubmitting }: FormikHelpers<RegisterType>
+        values: ForgotPasswordType,
+        { setSubmitting }: FormikHelpers<ForgotPasswordType>
       ) => {
-        register(values);
+        resetPassword(values.user);
         setSubmitting(false);
       },
-      validationSchema: registerSchema,
+      validationSchema: forgotPasswordSchema,
     });
 
   return (
@@ -45,12 +37,7 @@ function ForgotPassword() {
         <div className="successful">
           <div>
             <h3>Success!</h3>
-            <p>
-              You have successfully registered your account! You should be
-              recieving an email from us to confirm your account creation.
-              Please click the link provided to confirm your account to begin
-              budgeting!{" "}
-            </p>
+            <p>password reset </p>
             <button onClick={() => setSuccess(false)}>x</button>
           </div>
         </div>
@@ -70,21 +57,22 @@ function ForgotPassword() {
             <span className={theme ? `dark-text` : `primary-text`}>Email</span>{" "}
             <input
               placeholder="Enter your email..."
-              name="email"
+              name="user"
+              id="user"
               type="email"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.email}
+              value={values.user}
             />
-            {errors.email && touched.email ? (
-              <div className="error">{errors.email}</div>
+            {errors.user && touched.user ? (
+              <div className="error">{errors.user}</div>
             ) : (
               <div className="error"></div>
             )}
           </div>
 
           <div className="submit-forgot-row">
-            <button type="submit" className="link">
+            <button type="submit" className={theme ? "link-dark-submit" : "link-light"}>
               Submit
             </button>
           </div>

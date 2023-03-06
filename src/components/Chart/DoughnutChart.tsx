@@ -56,18 +56,22 @@ function DoughnutChart() {
   ChartJS.defaults.color = fontColors;
 
   const entertainmentPercentage = useMemo(() => {
+    if (expenses.length === 0) return 0;
     return (expensesBreakDown.Entertainment / budget.value) * 100;
   }, [budget, expenses]);
 
   const groceriesPercentage = useMemo(() => {
+    if (expenses.length === 0) return 0;
     return (expensesBreakDown.Groceries / budget.value) * 100;
   }, [budget, expenses]);
 
   const billsPercentage = useMemo(() => {
+    if (expenses.length === 0) return 0;
     return (expensesBreakDown.Bills / budget.value) * 100;
   }, [budget, expenses]);
 
   const otherPercentage = useMemo(() => {
+    if (expenses.length === 0) return 0;
     return (expensesBreakDown.Other / budget.value) * 100;
   }, [budget, expenses]);
 
@@ -80,6 +84,10 @@ function DoughnutChart() {
       }
     >
       <div className="break-down-container">
+        <div className={theme ? "header dark-text" : "header fourth-text"}>
+          Breakdown
+          <div className="arrow" />
+        </div>
         <span style={{ background: "#7794f5", color: "#39436e" }}>
           <p>Entertainment:</p>
           <div className="break-down-row">

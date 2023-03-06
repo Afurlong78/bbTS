@@ -6,6 +6,9 @@ import Home from "./components/Home/Home";
 const Login = lazy(() => import("./components/Login/Login"));
 const Register = lazy(() => import("./components/Register/Register"));
 const BudgetUI = lazy(() => import("./components/BudgetUI/BudgetUI"));
+const UpdatePassword = lazy(
+  () => import("./components/UpdatePassword/UpdatePassword")
+);
 const ForgotPassword = lazy(
   () => import("./components/ForgotPassword/ForgotPassword")
 );
@@ -29,6 +32,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/budget" element={<BudgetUI />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
         </Route>
       </Routes>
     </Router>

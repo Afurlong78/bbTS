@@ -140,14 +140,32 @@ function Register() {
           </div>
 
           <div className="submit-forgot-row">
-            <button type="submit" className="link">
+            <button type="submit" className={theme ? "link-dark-submit" : "link-light"}>
               Submit
             </button>
           </div>
         </form>
       </div>
 
-      <BackgroundComponent />
+      <div className="password-background-wrapper">
+        <div className="password-rules-container">
+          <div className="password-rules">
+            <h2>Password Rules</h2>
+            <p>
+              In order to successfully register an account with BetterBudget,
+              your password must match the below requirements.
+            </p>
+            <ul>
+              <li>Minimum of 5 characters.</li>
+              <li>At least 1 uppercase letter.</li>
+              <li>At least 1 lowercase letter.</li>
+              <li>At least 1 numeric digit.</li>
+              <li>At least 1 special character.</li>
+            </ul>
+          </div>
+        </div>
+        <BackgroundComponent />
+      </div>
     </div>
   );
 }

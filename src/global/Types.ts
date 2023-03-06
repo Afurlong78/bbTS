@@ -108,6 +108,15 @@ export type SignedInType = {
 };
 
 //form types
+export type ForgotPasswordType = {
+  user: string;
+};
+
+export type UpdatePasswordType = {
+  password: string;
+  confirm: string;
+};
+
 export type RegisterType = {
   email: string;
   password: string;

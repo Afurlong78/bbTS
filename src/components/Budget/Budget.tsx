@@ -108,10 +108,13 @@ function Budget() {
             >
               Submit
             </button>
+            <div className="inside">
+              <CategoryDropDown category={category} setCategory={setCategory} />
+            </div>
           </div>
         </div>
 
-        <div>
+        <div className="outside">
           <CategoryDropDown category={category} setCategory={setCategory} />
         </div>
       </div>

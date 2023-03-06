@@ -13,6 +13,7 @@ import {
   faRightToBracket,
   faSun,
   faMoon,
+  faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogin } from "../../hooks/useLogin";
 import { useSignInContext } from "../../context/SignInProvider";
@@ -96,7 +97,20 @@ function Nav() {
           />
         </Link>
 
-        {signedIn ? null : (
+        {signedIn ? (
+          <Link
+            to="/update-password"
+            className={
+              theme ? `link dark-primary-button` : `link light-primary-button`
+            }
+          >
+            <span>Update Password</span>
+            <FontAwesomeIcon
+              icon={faPen}
+              style={{ height: "50%", aspectRatio: "1/1" }}
+            />
+          </Link>
+        ) : (
           <Link
             to="/register"
             className={
@@ -182,7 +196,23 @@ function Nav() {
             />
           </Link>
 
-          {signedIn ? null : (
+          {signedIn ? (
+            <Link
+              to="/update-password"
+              className={
+                theme
+                  ? "dark-primary-mobile-button"
+                  : "light-primary-mobile-button"
+              }
+              onClick={() => setOpenMobile(false)}
+            >
+              Update
+              <FontAwesomeIcon
+                icon={faPen}
+                style={{ height: "50%", width: "50%" }}
+              />
+            </Link>
+          ) : (
             <Link
               to="/register"
               className={

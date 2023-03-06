@@ -35,7 +35,7 @@ function Home() {
 
         <div className="banner-text">
           <h1>Try BetterBudget for a brighter financial future.</h1>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div>
             <p> Simple.</p>
             <p>Easy.</p>
             <p>Done.</p>
@@ -64,7 +64,16 @@ function Home() {
             ref={aboutHeaderRef}
           >
             <h2 className={theme ? "dark-text" : "light-text"}>
-              About BetterBudget
+              About{" "}
+              <strong
+                style={
+                  theme
+                    ? { color: "white", marginLeft: "7px" }
+                    : { color: "#39436e", marginLeft: "7px" }
+                }
+              >
+                BetterBudget
+              </strong>
             </h2>
           </div>
 
@@ -77,14 +86,14 @@ function Home() {
               wanted to get something for your self to enjoy, but you are unsure
               if your monthly budget will allow it. If this statement sounds
               like something that you or a friend has experienced, then
-              BetterBudget might just be for you. BetterBudget is a fullstack
-              application that was made with the intent of helping people
-              understand their current months expenses. With BetterBudget, you
-              dont have to worry about exceeding your monthly budget: in real
-              time you can store your monthly income and expenses for easy
-              access at any moment, visualize your monthly expenses, compare
-              your monthly expenses, and ultimately walk away with a greater
-              understanding of your finances.
+              BetterBudget might just be for you. BetterBudget is an application
+              that was made with the intent of helping people understand their
+              current months expenses. With BetterBudget, you dont have to worry
+              about exceeding your monthly budget: in real time you can store
+              your monthly income and expenses for easy access at any moment,
+              visualize your monthly expenses, compare your monthly expenses,
+              and ultimately walk away with a greater understanding of your
+              finances.
             </p>
           </div>
         </div>

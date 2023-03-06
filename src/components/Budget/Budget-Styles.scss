@@ -18,6 +18,11 @@
 
   @include flexDisplay(row, space-between, center);
 
+  @media all and (max-width: 800px) {
+    @include flexDisplay(column, space-between, center);
+    margin-bottom: 20px;
+  }
+
   .value {
     height: 3.5rem;
     width: 100%;
@@ -31,6 +36,12 @@
 
     @include fonts(0.9rem, 500, 0.5px);
     @include flexDisplay(row, start, center);
+
+    @media all and (max-width: 800px) {
+      max-width: 100%;
+
+      @include fonts(1.3rem, 500, 0.5px);
+    }
   }
 }
 
@@ -42,6 +53,10 @@
 
   @include flexDisplay(row, space-between, end);
   gap: 2rem;
+
+  @media all and (max-width: 800px) {
+    @include flexDisplay(column, space-between, center);
+  }
 
   .inputs {
     width: 100%;
@@ -77,10 +92,19 @@
   @include flexDisplay(row, space-between, center);
   @include fonts(1.2rem, 500, 0.5px);
 
+  @media all and (max-width: 800px) {
+    @include flexDisplay(column, center, start);
+  }
+
   .item {
     gap: 1rem;
     @include flexDisplay(row, center, center);
     margin-bottom: 10px;
+
+    @media all and (max-width: 800px) {
+      width: 100%;
+      @include flexDisplay(row, space-between, space-between);
+    }
   }
 }
 
@@ -90,9 +114,9 @@
 
   padding: 5px;
   border-radius: 4px;
-  border: 2px solid #161616;
+  border: 2px solid #303030;
 
-  background: #161616;
+  background: #303030;
   color: white;
 
   @include flexDisplay(row, center, center);
@@ -101,9 +125,9 @@
   transition: all 300ms ease-in-out;
 
   &:hover {
-    border: 2px solid #161616;
+    border: 2px solid #303030;
 
-    background: #292929;
+    background: #383838;
     color: white;
   }
 }
@@ -172,5 +196,19 @@
   &:focus {
     border: none;
     outline: 2px solid black;
+  }
+}
+
+.outside {
+  @media all and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.inside {
+  display: none;
+
+  @media all and (max-width: 800px) {
+    display: flex;
   }
 }
