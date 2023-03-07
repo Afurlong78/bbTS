@@ -47,17 +47,24 @@ $gradient-color-three: #586fbb00;
     background: $darkTheme;
   }
 }
-
+//error
 .error {
   height: 1rem;
   width: 100%;
 
   color: red;
 
-  @include flexDisplay(row, center, center);
-  @include fonts(0.8rem, 500, 0.5px);
+  @include flexDisplay(row, start, center);
+  @include fonts(0.7rem, 500, 0.5px);
 
   padding-top: 0.2rem;
+}
+
+.error-column {
+  height: 100%;
+  width: 100%;
+
+  @include flexDisplay(column, start, center);
 }
 
 .visible {

@@ -85,7 +85,7 @@ function DoughnutChart() {
     >
       <div className="break-down-container">
         <div className={theme ? "header dark-text" : "header fourth-text"}>
-          Breakdown
+          <strong>Breakdown</strong>
           <div className="arrow" />
         </div>
         <span style={{ background: "#7794f5", color: "#39436e" }}>

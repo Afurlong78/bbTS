@@ -1,9 +1,10 @@
 import { useState, useContext, createContext } from "react";
 import { useBudgetContext } from "./BudgetProvider";
-import { ExpenseTypes, ContextProps } from "../global/Types";
+import { ExpenseTypes, ContextProps, InputError } from "../global/Types";
 import { monthKeys } from "../utils/monthKeys";
 import { nanoid } from "nanoid";
 import axios from "axios";
+import { Input } from "reactstrap";
 
 const ExpenseContext = createContext({} as ExpenseTypes);
 
@@ -20,9 +21,18 @@ export function ExpenseProvider({ children }: ContextProps) {
     useBudgetContext();
   const [expenseInput, setExpenseInput] = useState<string>("");
   const [spent, setSpent] = useState<number>(0);
+  const [expenseError, setExpenseError] = useState<InputError>({
+    error: false,
+    errorMessage: "",
+  });
 
   function postExpense(value: number, month: string, category: string) {
-    if (isNaN(value) || value === 0) return;
+    if (isNaN(value) || value === 0) {
+      return setExpenseError({
+        error: true,
+        errorMessage: "Expense must be a number and cannot be 0.",
+      });
+    }
 
     setExpenseInput("");
 
@@ -61,9 +71,11 @@ export function ExpenseProvider({ children }: ContextProps) {
         }
 
         setMonths(m);
+        setExpenseError({ error: false, errorMessage: "" });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err, "error");
+        setExpenseError({ error: true, errorMessage: err.response.data.error });
       });
   }
 
@@ -152,6 +164,8 @@ export function ExpenseProvider({ children }: ContextProps) {
         setSpent,
         removeExpense,
         removeAllExpenses,
+        expenseError,
+        setExpenseError,
       }}
     >
       {children}

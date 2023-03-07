@@ -28,6 +28,8 @@ export type BudgetTypes = {
   expensesBreakDown: ExpensesBreakDown;
   months: Month[];
   setMonths: Dispatch<SetStateAction<Month[]>>;
+  budgetError: InputError;
+  setBudgetError: Dispatch<SetStateAction<InputError>>;
 };
 
 export type Budget = {
@@ -45,6 +47,8 @@ export type ExpenseTypes = {
   removeAllExpenses: (month: string) => void;
   setSpent: Dispatch<SetStateAction<number>>;
   spent: number;
+  expenseError: InputError;
+  setExpenseError: Dispatch<SetStateAction<InputError>>;
 };
 
 export type Expense = {
@@ -155,3 +159,9 @@ export interface MonthsKeysType {
   November: number;
   December: number;
 }
+
+//error inputs
+export type InputError = {
+  error?: boolean;
+  errorMessage?: string;
+};

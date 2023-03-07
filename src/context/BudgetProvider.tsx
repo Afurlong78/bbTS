@@ -7,6 +7,7 @@ import {
   Expense,
   ExpensesBreakDown,
   Month,
+  InputError,
 } from "../global/Types";
 import axios from "axios";
 
@@ -22,6 +23,10 @@ export function BudgetProvider({ children }: ContextProps) {
 
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [budgetInput, setBudgetInput] = useState<string>("");
+  const [budgetError, setBudgetError] = useState<InputError>({
+    error: false,
+    errorMessage: "",
+  });
   const [budget, setBudget] = useState<Budget>({
     value: 0,
     month: "",
@@ -113,6 +118,8 @@ export function BudgetProvider({ children }: ContextProps) {
         expensesBreakDown,
         months,
         setMonths,
+        budgetError,
+        setBudgetError,
       }}
     >
       {children}

@@ -8,9 +8,9 @@ import CategoryDropDown from "../DropDown/CategoryDropDown";
 import "./Budget-Styles.scss";
 
 function Budget() {
-  const { budget, postBudget, budgetInput, setBudgetInput } =
+  const { budget, postBudget, budgetInput, setBudgetInput, budgetError } =
     useBudgetContext();
-  const { postExpense, spent, expenseInput, setExpenseInput } =
+  const { postExpense, spent, expenseInput, setExpenseInput, expenseError } =
     useExpenseContext();
   const { theme } = useSignInContext();
   const [category, setCategory] = useState<string>("Entertainment");
@@ -72,49 +72,66 @@ function Budget() {
         <div className="inputs">
           <span className={theme ? "dark-text" : "fourth-text"}>Budget</span>
 
-          <div className="input-wrapper">
-            <input
-              onChange={(e) => setBudgetInput(e.target.value)}
-              className={theme ? "input-dark" : "input-light"}
-              placeholder="Submit your budget..."
-              value={budgetInput}
-              type="number"
-            />
-            <button
-              onClick={() => postBudget(parseInt(budgetInput), budget.month)}
-              className={theme ? "dark-button" : "light-button"}
-            >
-              Submit
-            </button>
+          <div className="error-column">
+            <div className="input-wrapper">
+              <input
+                onChange={(e) => setBudgetInput(e.target.value)}
+                className={theme ? "input-dark" : "input-light"}
+                placeholder="Submit your budget..."
+                value={budgetInput}
+                type="number"
+              />
+              <button
+                onClick={() => postBudget(parseInt(budgetInput), budget.month)}
+                className={theme ? "dark-button" : "light-button"}
+              >
+                Submit
+              </button>
+            </div>
+            {budgetError.error ? (
+              <div className="error">{budgetError.errorMessage}</div>
+            ) : (
+              <div className="error"></div>
+            )}
           </div>
         </div>
 
         <div className="inputs">
           <span className={theme ? "dark-text" : "fourth-text"}>Expense</span>
 
-          <div className="input-wrapper">
-            <input
-              onChange={(e) => setExpenseInput(e.target.value)}
-              className={theme ? "input-dark" : "input-light"}
-              type="number"
-              placeholder="Submit your expenses..."
-              value={expenseInput}
-            />
-            <button
-              onClick={() =>
-                postExpense(parseInt(expenseInput), budget.month, category)
-              }
-              className={theme ? "dark-button" : "light-button"}
-            >
-              Submit
-            </button>
-            <div className="inside">
-              <CategoryDropDown category={category} setCategory={setCategory} />
+          <div className="error-column">
+            <div className="input-wrapper">
+              <input
+                onChange={(e) => setExpenseInput(e.target.value)}
+                className={theme ? "input-dark" : "input-light"}
+                type="number"
+                placeholder="Submit your expenses..."
+                value={expenseInput}
+              />
+              <button
+                onClick={() =>
+                  postExpense(parseInt(expenseInput), budget.month, category)
+                }
+                className={theme ? "dark-button" : "light-button"}
+              >
+                Submit
+              </button>
+              <div className="inside">
+                <CategoryDropDown
+                  category={category}
+                  setCategory={setCategory}
+                />
+              </div>
             </div>
+            {expenseError.error ? (
+              <div className="error">{expenseError.errorMessage}</div>
+            ) : (
+              <div className="error"></div>
+            )}
           </div>
         </div>
 
-        <div className="outside">
+        <div className="outside" style={{ marginBottom: "1rem" }}>
           <CategoryDropDown category={category} setCategory={setCategory} />
         </div>
       </div>
