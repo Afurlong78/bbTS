@@ -29,6 +29,11 @@
     border: 2px solid #303030;
     color: white;
   }
+
+  @media all and (max-width: 500px) {
+    width: 8rem;
+    @include fonts(0.7rem, 700, 0.5px);
+  }
 }
 
 .dd-light-primary-button {
@@ -47,5 +52,10 @@
     background-color: white;
     border: 2px solid $fourthColor;
     color: $fourthColor;
+  }
+
+  @media all and (max-width: 500px) {
+    width: 8rem;
+    @include fonts(0.7rem, 700, 0.5px);
   }
 }

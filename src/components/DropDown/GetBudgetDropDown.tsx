@@ -26,7 +26,7 @@ function GetBudgetDropDown() {
     setMonth(month);
 
     axios
-      .get("http://localhost:5000/api/posts/budgets/getMonth", {
+      .get("https://bbtsserver-production.up.railway.app/api/posts/budgets/getMonth", {
         headers: {
           ["Authorization"]: token,
           ["Month"]: month,

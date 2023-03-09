@@ -23,7 +23,7 @@ function Home() {
     triggerOnce: true,
   });
 
-  const { theme } = useSignInContext();
+  const { theme, signedIn } = useSignInContext();
 
   return (
     <div className="home-container">
@@ -48,12 +48,14 @@ function Home() {
           >
             About
           </a>
-          <Link
-            to="/register"
-            className={theme ? "button light-text " : "button fourth-text"}
-          >
-            Register
-          </Link>
+          {signedIn ? null : (
+            <Link
+              to="/register"
+              className={theme ? "button light-text " : "button fourth-text"}
+            >
+              Register
+            </Link>
+          )}
         </div>
       </div>
 

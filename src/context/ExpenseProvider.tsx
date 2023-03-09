@@ -14,8 +14,6 @@ export const useExpenseContext = () => {
 
 export function ExpenseProvider({ children }: ContextProps) {
   const token = localStorage.getItem("bb-login-token");
-  const expenseLink = process.env.REACT_APP_USER_EXPENSES!;
-  const expenseDeleteLink = process.env.REACT_APP_USER_EXPENSES_DELETE!;
 
   const { expenses, months, budget, setExpenses, setMonths } =
     useBudgetContext();
@@ -38,7 +36,7 @@ export function ExpenseProvider({ children }: ContextProps) {
 
     axios
       .post(
-        expenseLink,
+        "https://bbtsserver-production.up.railway.app/api/posts/expenses",
         {
           value: value,
           month: month,
@@ -82,7 +80,7 @@ export function ExpenseProvider({ children }: ContextProps) {
   function removeExpense(id: string, month: string) {
     axios
       .post(
-        expenseDeleteLink,
+        "https://bbtsserver-production.up.railway.app/api/posts/expenses/delete",
         {
           id: id,
           month: month,
@@ -117,13 +115,17 @@ export function ExpenseProvider({ children }: ContextProps) {
       })
       .catch((err) => {
         console.log(err);
+        setExpenseError({
+          error: true,
+          errorMessage: "Unable to remove budget.",
+        });
       });
   }
 
   function removeAllExpenses(month: string) {
     axios
       .post(
-        "http://localhost:5000/api/posts/expenses/delete/deleteAll",
+        "https://bbtsserver-production.up.railway.app/api/posts/expenses/delete/deleteAll",
         {
           month: month,
         },
@@ -151,6 +153,10 @@ export function ExpenseProvider({ children }: ContextProps) {
       })
       .catch((err) => {
         console.log(err);
+        setExpenseError({
+          error: true,
+          errorMessage: "Unable to remove all expenses.",
+        });
       });
   }
 

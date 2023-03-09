@@ -10,13 +10,18 @@ export const useGetPageData = () => {
   const token = localStorage.getItem("bb-login-token");
   const budgetLink = process.env.REACT_APP_USER_ON_LOAD!;
 
+  // "https://bbtsserver-production.up.railway.app/"
+
   function getData() {
     axios
-      .get("http://localhost:5000/api/posts/budgets/budgetsOnLoad", {
-        headers: {
-          ["Authorization"]: token,
-        },
-      })
+      .get(
+        "https://bbtsserver-production.up.railway.app/api/posts/budgets/budgetsOnLoad",
+        {
+          headers: {
+            ["Authorization"]: token,
+          },
+        }
+      )
       .then((res) => {
         // console.log(res, "res");
         const copy = [...res.data.data.expenses];

@@ -58,6 +58,17 @@ $gradient-color-three: #586fbb00;
   @include fonts(0.7rem, 500, 0.5px);
 
   padding-top: 0.2rem;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  @media all and (max-width: 950px) {
+    @include fonts(0.6rem, 500, 0.5px);
+  }
+
+  @media all and (max-width: 800px) {
+    @include fonts(0.7rem, 500, 0.5px);
+  }
 }
 
 .error-column {

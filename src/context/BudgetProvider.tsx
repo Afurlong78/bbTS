@@ -19,7 +19,6 @@ export const useBudgetContext = () => {
 
 export function BudgetProvider({ children }: ContextProps) {
   const token = localStorage.getItem("bb-login-token");
-  const budgetLink = process.env.REACT_APP_USER_BUDGETS!;
 
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [budgetInput, setBudgetInput] = useState<string>("");
@@ -63,12 +62,18 @@ export function BudgetProvider({ children }: ContextProps) {
   }, [expenses]);
 
   function postBudget(value: number, month: string) {
-    if (isNaN(value) || value === 0) return;
+    if (isNaN(value) || value === 0) {
+      return setBudgetError({
+        error: true,
+        errorMessage: "Budget must be a number and cannot be 0.",
+      });
+    }
+
     setBudgetInput("");
 
     axios
       .post(
-        budgetLink,
+        "https://bbtsserver-production.up.railway.app/api/posts/budgets",
         {
           budget: value,
           month: month,
@@ -98,10 +103,19 @@ export function BudgetProvider({ children }: ContextProps) {
         }
 
         setMonths(m);
+
+        setBudgetError({
+          error: false,
+          errorMessage: "",
+        });
       })
       .catch((error) => {
         console.log(error, "error");
         // alert(error.response.data.data);
+        setBudgetError({
+          error: true,
+          errorMessage: "Budget error.",
+        });
       });
   }
 

@@ -16,17 +16,32 @@ export function useForgotPassword() {
     setErrorOrLoading({ ...errorOrLoading, loading: true });
 
     axios
-      .post("http://localhost:5000/api/posts/generatePassword", {
-        user: email,
-      })
+      .post(
+        "https://bbtsserver-production.up.railway.app/api/posts/generatePassword",
+        {
+          user: email,
+        }
+      )
       .then((res) => {
         console.log(res);
         setErrorOrLoading({ ...errorOrLoading, loading: false });
+        setSuccess(true);
       })
       .catch((err) => {
         console.log(err);
+        setErrorOrLoading({
+          ...errorOrLoading,
+          error: true,
+          errorMessage: err.response.data.error,
+        });
       });
   }
 
-  return { resetPassword, errorOrLoading, success, setSuccess };
+  return {
+    resetPassword,
+    errorOrLoading,
+    success,
+    setSuccess,
+    setErrorOrLoading,
+  };
 }

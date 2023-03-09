@@ -8,7 +8,13 @@ import { useForgotPassword } from "../../hooks/useForgotPassword";
 
 function ForgotPassword() {
   const { theme } = useSignInContext();
-  const { resetPassword, success, setSuccess } = useForgotPassword();
+  const {
+    resetPassword,
+    success,
+    setSuccess,
+    errorOrLoading,
+    setErrorOrLoading,
+  } = useForgotPassword();
 
   const { values, handleChange, handleSubmit, errors, touched, handleBlur } =
     useFormik({
@@ -37,8 +43,27 @@ function ForgotPassword() {
         <div className="successful">
           <div>
             <h3>Success!</h3>
-            <p>password reset </p>
+            <p>
+              Your password has been reset. Please check your email for your new
+              password.{" "}
+            </p>
             <button onClick={() => setSuccess(false)}>x</button>
+          </div>
+        </div>
+      ) : null}
+
+      {errorOrLoading.error ? (
+        <div className="successful">
+          <div>
+            <h3>There was a problem...</h3>
+            <p>{errorOrLoading.errorMessage}</p>
+            <button
+              onClick={() =>
+                setErrorOrLoading({ ...errorOrLoading, error: false })
+              }
+            >
+              x
+            </button>
           </div>
         </div>
       ) : null}
@@ -72,7 +97,10 @@ function ForgotPassword() {
           </div>
 
           <div className="submit-forgot-row">
-            <button type="submit" className={theme ? "link-dark-submit" : "link-light"}>
+            <button
+              type="submit"
+              className={theme ? "link-dark-submit" : "link-light"}
+            >
               Submit
             </button>
           </div>

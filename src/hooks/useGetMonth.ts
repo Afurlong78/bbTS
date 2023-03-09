@@ -9,7 +9,7 @@ export const useGetMonthData = () => {
 
   function getData() {
     axios
-      .get("http://localhost:5000/api/posts/month", {
+      .get("https://bbtsserver-production.up.railway.app/api/posts/month", {
         headers: {
           ["Authorization"]: token,
         },

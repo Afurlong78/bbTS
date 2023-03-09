@@ -89,9 +89,9 @@ function Budget() {
               </button>
             </div>
             {budgetError.error ? (
-              <div className="error">{budgetError.errorMessage}</div>
+              <p className="error">{budgetError.errorMessage}</p>
             ) : (
-              <div className="error"></div>
+              <p className="error"></p>
             )}
           </div>
         </div>
@@ -124,14 +124,14 @@ function Budget() {
               </div>
             </div>
             {expenseError.error ? (
-              <div className="error">{expenseError.errorMessage}</div>
+              <p className="error">{expenseError.errorMessage}</p>
             ) : (
-              <div className="error"></div>
+              <p className="error"></p>
             )}
           </div>
         </div>
 
-        <div className="outside" style={{ marginBottom: "1rem" }}>
+        <div className="outside" style={{ marginBottom: "2rem" }}>
           <CategoryDropDown category={category} setCategory={setCategory} />
         </div>
       </div>

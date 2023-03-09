@@ -20,8 +20,6 @@
 
   overflow-x: hidden;
 
-  margin-top: 20px;
-
   @include flexDisplay(column, start, center);
 
   .category-display {
@@ -45,6 +43,11 @@
       margin-right: 10px;
 
       @include flexDisplay(row, start, center);
+
+      @media all and (max-width: 600px) {
+        @include fonts(1rem, 700, 0.5px);
+        min-width: 100px;
+      }
     }
   }
 
@@ -104,6 +107,13 @@
     width: auto;
 
     @include flexDisplay(row, start, center);
+
+    @media all and (max-width: 600px) {
+      min-width: 100px;
+      max-width: 100px;
+
+      @include fonts(0.8rem, 600, 0.5px);
+    }
   }
 }
 
@@ -123,6 +133,13 @@
   width: auto;
 
   @include flexDisplay(row, center, center);
+
+  @media all and (max-width: 600px) {
+    min-width: 100px;
+    max-width: 100px;
+
+    @include fonts(0.8rem, 600, 0.5px);
+  }
 
   button {
     height: 30px;

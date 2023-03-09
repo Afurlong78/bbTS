@@ -12,11 +12,11 @@ export const useUpdatePassword = () => {
   });
 
   function update(password: string, confirm: string) {
-    console.log("ran");
+    setErrorOrLoading({ ...errorOrLoading, loading: true });
 
     axios
       .post(
-        "http://localhost:5000/api/posts/updatePassword",
+        "https://bbtsserver-production.up.railway.app/api/posts/updatePassword",
         {
           password: password,
           confirm: confirm,
@@ -29,9 +29,16 @@ export const useUpdatePassword = () => {
       )
       .then((res) => {
         console.log(res);
+        setErrorOrLoading({ ...errorOrLoading, loading: false });
+        setSuccess(true);
       })
       .catch((err) => {
         console.log(err);
+        setErrorOrLoading({
+          error: true,
+          errorMessage: "Unable to reset password.",
+          loading: false,
+        });
       });
   }
 

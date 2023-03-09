@@ -34,6 +34,8 @@
 
     gap: 0.8rem;
 
+    overflow: hidden;
+
     @include fonts(0.9rem, 500, 0.5px);
     @include flexDisplay(row, start, center);
 
@@ -51,8 +53,10 @@
 
   box-sizing: border-box;
 
+  margin-bottom: 0px;
+
   @include flexDisplay(row, space-between, end);
-  gap: 2rem;
+  gap: 1rem;
 
   @media all and (max-width: 800px) {
     @include flexDisplay(column, space-between, center);
@@ -60,7 +64,6 @@
 
   .inputs {
     width: 100%;
-    // max-width: 600px;
     @include flexDisplay(column, center, start);
 
     input[type="number"]::-webkit-inner-spin-button,
