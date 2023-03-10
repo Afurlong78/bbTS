@@ -33,6 +33,10 @@
     padding: 10px;
 
     @include flexDisplay(column, center, center);
+    @media all and (max-width: 500px) {
+      min-width: 100%;
+      height: 100%;
+    }
 
     .form {
       width: 100%;
@@ -154,6 +158,10 @@
   @media all and (max-height: 700px) {
     display: inline-block;
     height: 800px;
+  }
+
+  @media all and (max-width: 500px) {
+    display: none;
   }
 }
 
