@@ -9,7 +9,7 @@ export const monthKeys: MonthsKeysType = {
   June: 5,
   July: 6,
   August: 7,
-  Spetember: 8,
+  September: 8,
   October: 9,
   November: 10,
   December: 11,
