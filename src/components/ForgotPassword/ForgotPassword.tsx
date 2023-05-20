@@ -107,7 +107,19 @@ function ForgotPassword() {
         </form>
       </div>
 
-      <BackgroundComponent />
+      <div className="password-background-wrapper">
+        <div className="password-rules-container">
+          <div className="password-rules">
+            <h2>Need some help? </h2>
+            <p>
+              Enter the email you registered your account with and a new
+              password will be sent. From there you can update
+              your password at any time.
+            </p>
+          </div>
+        </div>
+        <BackgroundComponent />
+      </div>
     </div>
   );
 }

@@ -153,7 +153,17 @@
 
   box-sizing: border-box;
 
-  padding: 20px 40px 0px 40px;
+  padding: 20px 0px 0px 0px;
+
+  .about-content-wrapper {
+    height: 100%;
+    width: 100%;
+    max-width: 1600px;
+
+    padding: 0px 40px 0px 40px;
+
+    margin: auto;
+  }
 
   h2 {
     border-bottom: 2px solid;
@@ -164,6 +174,7 @@
     margin-bottom: 30px;
     margin-top: 10px;
 
+    text-decoration: none;
     @media all and (max-width: 1024px) {
       @include flexDisplay(row, center, center);
     }
@@ -172,7 +183,7 @@
       @include fonts(1.5rem, 500, 0.5px);
     }
 
-    @media all and (max-width: 350px){
+    @media all and (max-width: 350px) {
       @include fonts(1.1rem, 500, 0.5px);
     }
   }
@@ -186,35 +197,42 @@
     margin-bottom: 30px;
     padding-bottom: 10px;
 
-    @media all and (max-width: 350px){
+    @media all and (max-width: 350px) {
       @include fonts(0.8rem, 500, 0.5px);
     }
   }
 }
 
+
+
 .how-it-works {
   height: auto;
   width: 100%;
+  max-width: 1600px;
+  margin: auto;
 
   box-sizing: border-box;
 
-  padding: $padding;
-
-  h2 {
-    @include fonts(1.5rem, 500, 0.5px);
-
-    margin-bottom: 30px;
-    margin-top: 10px;
-
-    @media all and (max-width: 350px){
-      @include fonts(1.1rem, 500, 0.5px);
-    }
-  }
+  padding: 0px 40px 40px 40px;
 
   @include flexDisplay(row, space-between, center);
 
   @media all and (max-width: 1024px) {
     @include flexDisplay(column, center, center);
+  }
+
+  .how-it-works-title {
+    @include fonts(1.5rem, 500, 0.5px);
+  
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+  
+    text-decoration: none;
+
+    @media all and (max-width: 350px) {
+      @include fonts(1.1rem, 500, 0.5px);
+    }
   }
 
   .how-it-works-cards-container {
@@ -254,9 +272,10 @@
 
 .footer-container {
   margin-bottom: 20px;
+  width: 100%;
+
   .home-footer {
     height: 3rem;
-    width: 100%;
 
     box-sizing: border-box;
 

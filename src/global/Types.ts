@@ -154,7 +154,7 @@ export interface MonthsKeysType {
   June: number;
   July: number;
   August: number;
-  Spetember: number;
+  September: number;
   October: number;
   November: number;
   December: number;

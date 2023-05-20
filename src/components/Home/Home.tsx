@@ -59,8 +59,11 @@ function Home() {
         </div>
       </div>
 
-      <div className={theme ? "dark-gradient" : "light-gradient"}>
-        <div id="about" className="about">
+      <div
+        className={theme ? "dark-gradient about" : "light-gradient about"}
+        id="about"
+      >
+        <div className="about-content-wrapper">
           <div
             className={aboutHeaderVisible ? `visible` : `hidden`}
             ref={aboutHeaderRef}
@@ -105,9 +108,15 @@ function Home() {
             className={howItWorksVisible ? `visible` : `hidden`}
             ref={howItWorks}
           >
-            <h2 className={theme ? "dark-text" : "light-text"}>
+            <h3
+              className={
+                theme
+                  ? "dark-text how-it-works-title"
+                  : "light-text how-it-works-title"
+              }
+            >
               How It All Works...
-            </h2>
+            </h3>
           </div>
 
           <div
